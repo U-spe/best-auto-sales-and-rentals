@@ -1,0 +1,562 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="viewport" content="width=device-width, initial-scale=1"><!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <title>Caricom Auto Sales | Guyana Used Car Exporter &amp; Importer</title>
+<meta name="description" content="Caricom is a trusted used car exporter and importer in Guyana, offering quality vehicles, competitive pricing, and reliable shipping services.">
+<meta name="keywords" content="Guyana used cars, used car exporter Guyana, car importer Guyana, Caricom Auto Sales, global vehicle">
+<meta name="csrf-token" content="wLhfrNgM4RLDRzgdf4wDKwxuRFx4zxK4hbrpwUXi">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel='shortcut icon' href='https://www.caricomautosales.gy/images/favicon.ico'>
+<link rel='apple-touch-icon-precomposed apple-touch-icon' href='https://www.caricomautosales.gy/images/favicon.ico'>
+<link rel='icon' href='https://www.caricomautosales.gy/images/favicon.ico'>
+
+<link href="https://assets.gabs.biz/sites_common_assets//css/bootstrap.css" rel="stylesheet">
+<link href="https://www.caricomautosales.gy/css/caricom-8.css" rel="stylesheet">
+<link href="https://site.gabs.biz/stock/public/css/common_17_06_2026_new.css" rel="stylesheet">
+
+
+
+<style type="text/css">@font-face {font-family:Karla;font-style:normal;font-weight:200 800;src:url(/cf-fonts/v/karla/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Karla;font-style:normal;font-weight:200 800;src:url(/cf-fonts/v/karla/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Karla;font-style:italic;font-weight:200 800;src:url(/cf-fonts/v/karla/5.2.8/latin/wght/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Karla;font-style:italic;font-weight:200 800;src:url(/cf-fonts/v/karla/5.2.8/latin-ext/wght/italic.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}</style>
+
+<script type="text/javascript" src="https://assets.gabs.biz/sites_common_assets//js/jquery.js"></script>
+
+<script type="text/javascript" src="https://assets.gabs.biz/sites_common_assets//js/sidebar_09122025.js"></script>
+
+        <!-- <link href="https://assets.gabs.biz/sites_common_assets/css/select2.min.css" rel="stylesheet"> -->
+    </head>
+
+    <body>
+        <header class="main-header">
+  <div class="topafterShapes"></div>
+  <!-- ===== TOP BAR ===== -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-row">
+        <        <div class="left d-lg-flex d-none">
+          <div class="top-left-inner d-xl-flex d-none">
+            <span class="caricomTop caricomTop-time"></span>
+            <p class="top-bar-text">Japan Time: <span id="timestr"></span></p>
+          </div> 
+          <div class="top-left-inner">
+            <span class="caricomTop caricomTop-time"></span>
+            <p class="top-bar-text">Guyana Time: <span id="guyanaTime"></span></p>
+          </div> 
+          <!-- <div class="top-border-inner"></div> -->
+        </div>
+                <div class="right d-flex">
+                    <div class="top-left-inner d-xl-flex d-lg-none d-md-flex d-none">
+            <span class="caricomTop caricomTop-language"></span>
+              <div id="google_translate_wrapper">
+                <select id="language_trigger">
+                  <option value="">Select Language</option>
+                </select>
+                <div id="google_translate_element" style="display:none;"></div>
+              </div>
+          </div>
+          <!--                           <div class="topbar__social social-links d-md-flex d-none">
+                                    <a class="social_flex" href="" target="_blank">
+                      <span class="caricomTop "></span>
+                    </a>
+                              </div> -->
+
+              <div class="login_btnSiteCommon d-none d-md-flex">
+                                          <a href="https://www.caricomautosales.gy/register" class="d-flex align-items-center"><span class="caricomTop caricomTop-signup me-1"></span> Sign Up</a>
+                      <span class="lineLoginSiteCommon font_bold font_16">|</span> 
+                      <a href="https://www.caricomautosales.gy/login?return_path=mypage" class="d-flex align-items-center"><span class="caricomTop caricomTop-login me-1"></span> Login</a>
+                                      </div>
+                    </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- ===== HEADER MENU ===== -->
+  <div class="container">
+    <div class="main-header-row">
+      <!-- LOGO -->
+      <div class="logo">
+        <a href="https://www.caricomautosales.gy/"><img src="https://www.caricomautosales.gy/images/logo.png" class="img-fluid" alt="Caricom Auto Sales Logo"></a>
+      </div>
+      <!-- NAVIGATION -->
+      <nav class="navbar navbar-expand-md" id="navbar">
+                <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav m-auto d-md-inline-flex d-none">
+                        <li class="nav-item"><a class="active nav-link" href="https://www.caricomautosales.gy/">Home</a></li>
+            <li class="nav-item dropdown hover">
+              <a class=" nav-link" href="https://www.caricomautosales.gy/stock-list">Stock List</a>
+              <ul>
+                <li><a href="https://www.caricomautosales.gy/stock-list?featured=1">Discount Car</a></li>
+                <li><a href="https://www.caricomautosales.gy/faq">FAQ</a></li>
+                <li><a href="https://www.caricomautosales.gy/how-to-buy">How To Buy</a></li>
+              </ul>
+            </li>
+            <!-- <li class="nav-item"><a class=" nav-link" href="https://www.caricomautosales.gy/rent-a-car">Rent-A-Car</a></li> -->
+            <li class="nav-item dropdown hover">
+              <a class=" nav-link" href="https://www.caricomautosales.gy/about-us">About Us</a>
+              <ul>
+                <li><a href="https://www.caricomautosales.gy/about-us">Company Profile</a></li>
+                <li><a href="https://www.caricomautosales.gy/photo-gallery">Photo Gallery</a></li>
+                <li><a href="https://www.caricomautosales.gy/bank-information">Bank</a></li>
+                <!-- <li><a href="https://www.caricomautosales.gy/why-choose-us">Why Choose Us</a></li>
+                <li><a href="https://www.caricomautosales.gy/service">Services</a></li>
+                <li><a href="https://www.caricomautosales.gy/voice">Testimonial</a></li> -->
+                <li><a href="https://www.caricomautosales.gy/contact-us">Contact Us</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class=" nav-link" href="https://www.caricomautosales.gy/inquiry">Inquiry</a></li>
+            <li class="nav-item"><a class=" nav-link" href="https://www.caricomautosales.gy/contact-us">Contact</a></li>
+          </ul>
+        </div>
+        <!-- </div> -->
+            </nav>
+
+      <!-- WHATSAPP -->
+      <div class="header-menu-login d-lg-flex d-none">
+          <div class="header-whatsapp">
+            <a href=" https://api.whatsapp.com/send?phone=5926108168&text=Hello, I want to buy cars from Japan."  data-action="share/whatsapp/share" target="_blank" rel="nofollow" target="_blank">
+              <div class="cricleIcon">
+                <span class="caricomTop caricomTop-whatsappTop"></span>
+              </div>
+              <div>
+                <p>+592-610-8168</p>
+              </div>
+            </a>
+          </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script type="text/javascript">
+      //  japan time =======================
+    function tTokyo() {
+      var GMT = 9; //GMT for Japan
+      var str;
+      var week = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+      var month = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+      var gmt = new Date();
+      var now = new Date();
+      var set = now.getTimezoneOffset();
+      gmt.setTime(now.getTime() + (set / 60 + parseFloat(GMT)) * 60 * 60 * 1000); /// Calculate with GMT
+      Mon = month[gmt.getMonth()];
+      Wee = week[gmt.getDay()];
+      Dat = gmt.getDate(); if (Dat < 10) Dat = "0" + Dat;
+      //Yr  = gmt.getYear();
+      hor = gmt.getHours(); if (hor < 10) hor = "0" + hor;
+      if (hor <= 12) {
+        str = "AM";
+      }
+      else {
+        hor = hor - 12;
+        hor = /*"0" +*/ hor;
+        str = "PM";
+      }
+      min = gmt.getMinutes(); if (min < 10) min = "0" + min;
+      sec = gmt.getSeconds(); if (sec < 10) sec = "0" + sec;
+
+      document.getElementById("timestr").innerHTML = hor + ":" + min + " " + str + ", " + Wee//+", "+Wee//+", "+Dat+"-"+Mon;//+"-"+Yr;
+      setTimeout('tTokyo()', 999);
+    }
+    tTokyo();
+
+    //  guyana time =======================
+    function tGuyana() {
+      var GMT = -4; // GMT for Guyana
+      var str;
+      var week = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+
+      var gmt = new Date();
+      var now = new Date();
+      var set = now.getTimezoneOffset();
+
+      gmt.setTime(now.getTime() + (set / 60 + parseFloat(GMT)) * 60 * 60 * 1000);
+
+      var Wee = week[gmt.getDay()];
+
+      var hor = gmt.getHours();
+      if (hor < 10) hor = "0" + hor;
+
+      if (hor < 12) {
+        str = "AM";
+      } else {
+        if (hor > 12) hor = hor - 12;
+        str = "PM";
+      }
+
+      var min = gmt.getMinutes();
+      if (min < 10) min = "0" + min;
+
+      document.getElementById("guyanaTime").innerHTML =
+        hor + ":" + min + " " + str + ", " + Wee;
+
+      setTimeout(tGuyana, 999);
+    }
+    tGuyana();
+
+    
+  // ====================== header my account dropdwon js ===============
+    document.addEventListener("DOMContentLoaded", function () {
+    const wrapper = document.querySelector(".headerHoverLogOut");
+    const toggle = document.querySelector(".userToggle");
+    const dropdown = document.querySelector(".headerHoverLogOutHover");
+
+    toggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+
+        dropdown.classList.toggle("active");
+        toggle.classList.toggle("active");
+        wrapper.classList.toggle("menu-open");
+    });
+
+    document.addEventListener("click", function () {
+        dropdown.classList.remove("active");
+        toggle.classList.remove("active");
+        wrapper.classList.remove("menu-open");
+    });
+});
+
+  </script>
+<div id="top_search"></div><link href="https://assets.gabs.biz/sites_common_assets//css/swiper-bundle.min.css" rel="stylesheet">
+<section class="bannerSite">
+  <a href="https://www.caricomautosales.gy/stock-list"><img src="https://www.caricomautosales.gy/images/home/banner.jpg" class="img-fluid m-auto d-block" alt="Caricom Auto Sales Banner"></a>
+</section>
+
+
+<div class="lazy-section" id="latest_stock_section" data-section="latest_stock_section">
+    <section class="latestStockMid common_padding">
+        <div class="container">
+            <!-- Header Skeleton -->
+            <div class="latestStockHeader">
+                <div class="sk sk-title"></div>
+                <div class="sk sk-link"></div>
+            </div>    
+            <!-- Cards Skeleton -->
+            <div class="latestStockGrid">
+                                    <div class="stockCard sk-card">
+                    <div class="sk sk-image"></div>
+                    <div class="sk sk-line"></div>
+                    <div class="sk sk-line small"></div>
+                    <div class="sk sk-price"></div>
+                    </div>
+                                    <div class="stockCard sk-card">
+                    <div class="sk sk-image"></div>
+                    <div class="sk sk-line"></div>
+                    <div class="sk sk-line small"></div>
+                    <div class="sk sk-price"></div>
+                    </div>
+                                    <div class="stockCard sk-card">
+                    <div class="sk sk-image"></div>
+                    <div class="sk sk-line"></div>
+                    <div class="sk sk-line small"></div>
+                    <div class="sk sk-price"></div>
+                    </div>
+                                    <div class="stockCard sk-card">
+                    <div class="sk sk-image"></div>
+                    <div class="sk sk-line"></div>
+                    <div class="sk sk-line small"></div>
+                    <div class="sk sk-price"></div>
+                    </div>
+                                    <div class="stockCard sk-card">
+                    <div class="sk sk-image"></div>
+                    <div class="sk sk-line"></div>
+                    <div class="sk sk-line small"></div>
+                    <div class="sk sk-price"></div>
+                    </div>
+                                    <div class="stockCard sk-card">
+                    <div class="sk sk-image"></div>
+                    <div class="sk sk-line"></div>
+                    <div class="sk sk-line small"></div>
+                    <div class="sk sk-price"></div>
+                    </div>
+                                    <div class="stockCard sk-card">
+                    <div class="sk sk-image"></div>
+                    <div class="sk sk-line"></div>
+                    <div class="sk sk-line small"></div>
+                    <div class="sk sk-price"></div>
+                    </div>
+                                    <div class="stockCard sk-card">
+                    <div class="sk sk-image"></div>
+                    <div class="sk sk-line"></div>
+                    <div class="sk sk-line small"></div>
+                    <div class="sk sk-price"></div>
+                    </div>
+                            </div>
+        </div>
+    </section>
+</div>
+
+<div class="lazy-section" id="welcome_section" data-section="welcome_section"></div>
+
+<div class="lazy-section" id="left_search_by_section" data-section="left_search_by_section"></div>
+
+<div class="lazy-section" id="service_section" data-section="service_section"></div>
+
+<div class="lazy-section" id="testimonial_section" data-section="testimonial_section"></div>
+
+<div class="lazy-section" id="why_choose_us_section" data-section="why_choose_us_section"></div>
+
+<div class="clr"></div>
+
+<script src="https://assets.gabs.biz/sites_common_assets//js/swiper-bundle.min.js"></script>
+
+<script type="text/javascript">
+  // ============ swiper slider for banner ============ 
+ /*  document.addEventListener('DOMContentLoaded', function () {
+      const swiper = new Swiper('.banner-mySwiper', {
+      effect: 'fade',
+      loop: true,
+      autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+      },
+      fadeEffect: {
+          crossFade: true
+      },
+      pagination: {
+          el: '.banner-custom-swiper-pagination',
+          clickable: true
+      },
+      navigation: {
+          nextEl: '.banner-swipper-custom-next',
+          prevEl: '.banner-swipper-custom-prev'
+      },
+      });
+  }); */
+
+  // ============ swiper slider for testimonial ============
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new MutationObserver(function () {
+        const swiperEl = document.querySelector('.testimonial-swiper');
+        if (!swiperEl) return;
+        // Stop observing once found
+        observer.disconnect();
+        new Swiper('.testimonial-swiper', {
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween: 30,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next-custom',
+            prevEl: '.swiper-button-prev-custom',
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 1 },
+        },
+        });
+
+    });
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    });
+
+
+
+
+   document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+
+    const cards = document.querySelectorAll(".service-card");
+    const defaultActive = document.querySelector(".service-card.active");
+    const grid = document.querySelector(".services-grid");
+
+    const updateIconColors = () => {
+      cards.forEach(card => {
+        const icon = card.querySelector(".icon-wrap");
+        if (card.classList.contains("active")) {
+          icon.style.background = "var(--bs-sitePrimary-color)";
+        } else {
+          icon.style.background = "var(--bs-siteSecondary-color)";
+        }
+      });
+    };
+
+    // Initial setup
+    updateIconColors();
+
+    cards.forEach(card => {
+      card.addEventListener("mouseenter", () => {
+        cards.forEach(c => c.classList.remove("active"));
+        card.classList.add("active");
+        updateIconColors();
+      });
+    });
+
+    grid.addEventListener("mouseleave", () => {
+      cards.forEach(c => c.classList.remove("active"));
+      if (defaultActive) defaultActive.classList.add("active");
+      updateIconColors();
+    });
+
+  }, 5000); // ⏱️ 3 seconds delay
+});
+
+</script>
+
+<script type="text/javascript">
+  function loadDropdownData(id, helperMethodName, placeholder = '', dataById = '', selectReqValue = '') {
+			return new Promise((resolve, reject) => {
+				$.ajaxSetup({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					}
+				});
+
+				$.ajax({
+					type: "GET",
+					url: "https://www.caricomautosales.gy/auction/get-data-load",
+					data: { id: id, methodName: helperMethodName, dataById: dataById },
+					beforeSend: function () {
+						$('#' + id).html('<option>Loading...</option>'); // Show loading text
+					},
+					success: function (response) {
+						if (Array.isArray(response) && response.length > 0) {
+							dropdownWithSelectedData(id, response, selectReqValue, placeholder,helperMethodName);
+							resolve();  // Resolve the promise when the dropdown is successfully loaded
+						} else {
+							console.warn('No data found for:', id);
+							$('#' + id).html('<option value="">No Data Found</option>');
+							resolve();  // Still resolve to allow chaining
+						}
+					},
+					error: function (error) {
+						console.error("Error fetching data:", error);
+						$('#' + id).html('<option value="">Error Loading Data</option>');
+						reject(error);  // Reject the promise if there's an error
+					}
+				});
+			});
+		}
+
+    function dropdownWithSelectedData(id, data, selectedValue = null, placeholder = null,helperMethodName=null) {
+			if (Array.isArray(data) && data.length > 0) {
+				const options = data.map(item => 
+					`<option value="${item.value}" ${(item.value == selectedValue) ? 'selected' : ''}>${(helperMethodName!='modelCodeOneData') ? item.name.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase()+word.slice(1)).join(' ') : item.name}</option>`
+				).join('');
+				const placeholderText = placeholder ? `Select an ${placeholder}` : 'Select an Option';
+				$('#' + id).html(`<option value="">${placeholderText}</option>` + options);
+			} else {
+				console.warn(`No data available for dropdown ${id}`, data);
+				$('#' + id).html('<option value="">No Data Found</option>');
+			}
+		}
+        
+
+  function checkForm(theform) {
+    var year_from = '';
+    var year_to = '';
+
+    jQuery(document).ready(function($) {
+      year_from = $('#mfg_from').val();
+      year_to = $('#mfg_to').val();
+    });
+
+    if (year_from != '' && year_to != '') {
+      if (eval(year_from) > eval(year_to)) {
+        alert("Invalid Year Range !");
+        $('#mfg_from').focus();
+        return false;
+      }
+    }
+
+    var len = theform.elements.length;
+    for (var i = 0; i < len; i++) {
+      var e = theform.elements[i];
+      if ((e.type == 'checkbox' || e.type == 'radio') && !e.checked) e.disabled = true;
+      if ((e.type == 'select-one') && e.value == '') e.disabled = true;
+      if (e.type == 'text' && e.value.length == 0) e.disabled = true;
+
+    }
+    return true;
+  }
+
+     async function getCsrfToken() {
+        try {
+            const res = await fetch('https://www.caricomautosales.gy/get-csrf-token', {
+                credentials: 'same-origin'
+            });
+            const data = await res.json();
+            return data.token || '';
+        } catch (error) {
+            console.error('Error fetching CSRF token:', error);
+            return '';
+        }
+    }
+     // model data reloading function
+    // function loadModalData(make_val, model_id, selected_value = '') {
+    async function loadModalData(make_val, model_id, selected_value = '') {
+        const csrfToken = await getCsrfToken();
+        $.ajax({
+            url: "https://www.caricomautosales.gy/get-model-data",
+            type: 'POST',
+            data: {
+                _token: csrfToken,
+                value: make_val,
+                filter: selected_value
+            },
+            dataType: 'JSON',
+            beforeSend: function () {
+                $('#' + model_id).html('<option value="">Loading...</option>');
+            },
+            success: function(respJSON) {
+                $('#' + model_id).html('<option value="">Select Model</option>');
+
+                if (respJSON.data && Array.isArray(respJSON.data) && respJSON.data.length > 0) {
+                    $.each(respJSON.data, function(index, item) {
+                        if (item.name && item.value) {
+                            var isSelected = (selected_value && selected_value == item.value) ? 'selected' : '';
+                            $('#' + model_id).append('<option value="' + item.value + '" ' + isSelected + '>' + item.name + '</option>');
+                        }
+                    });
+                } 
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Error: " + status + ", " + error);
+            }
+        });
+    }
+</script>
+        <div class="lazy-section" id="footer" data-section="footer"></div>
+
+        
+        <script>
+            var HM = "https://www.caricomautosales.gy";
+            var MOBVIEW = "no";
+        </script>
+        
+                    <script> 
+                // js flag for checking merge on/off
+                var stockListFromMerge = 0;
+                var mergeSearchCacheJs = "";
+                var mergePriceCacheJs  = "";
+                var ASSET_REMOTE_URL    = "https://assets.gabs.biz/sites_common_assets/";
+                var VER_TOP_SEARCH_Mid_JS = "https://site.gabs.biz/sitezy-common/js/top_search_14042026";
+    
+                //   check in auth user Login
+                var checkAuthTop = "";
+                let converDataTop = {"USD":1,"JPY":159.82900000000000773070496506989002227783203125,"GBP":0.7420999999999999818811602381174452602863311767578125,"EUR":0.8587000000000000188293824976426549255847930908203125,"AUD":1.39290000000000002700062395888380706310272216796875,"NZD":1.6868000000000000770938868299708701670169830322265625,"CAD":1.38300000000000000710542735760100185871124267578125,"SGD":1.278799999999999936761696517351083457469940185546875,"GYD":209.15100000000001045918907038867473602294921875,"AED":3.672499999999999875655021241982467472553253173828125,"LKR":332.45999999999997953636921010911464691162109375,"KES":129.400000000000005684341886080801486968994140625,"INR":95.2888999999999981582732289098203182220458984375,"VES":557.2759999999999536157702095806598663330078125};
+    
+                var DealerCurrTop = "USD";
+            </script>
+                <script src="https://site.gabs.biz/sitezy-common/js/common_site_js_15062026.js"></script> 
+
+                    <script src="https://site.gabs.biz/sitezy-common/js/top_search_start_11062026.js"></script> 
+               
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"c1232a1026e9453cabddf87bb8a32652","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
