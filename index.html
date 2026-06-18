@@ -9,7 +9,6 @@
     <meta name="keywords" content="Best Auto Sales Guyana, Car Rentals Mahaica, Buy Used Cars E.C.D., Range Rover for sale Guyana">
     
     <link rel="stylesheet" href="style.css">
-    <!-- Using Google Fonts for a bold, luxurious automotive look -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -18,7 +17,6 @@
     <header class="site-header" id="header">
         <div class="container header-inner">
             <div class="brand-logo">
-                <!-- Conceptual Logo representation using CSS for the gold wreath & car silhouette -->
                 <div class="logo-mark">
                     <span class="wreath"></span>
                     <span class="car-silhouette"></span>
@@ -29,7 +27,7 @@
                 </div>
             </div>
             
-            <button class="mobile-toggle" id="mobile-toggle">
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
                 <span></span><span></span><span></span>
             </button>
 
@@ -43,7 +41,7 @@
                 </ul>
                 <div class="nav-actions">
                     <a href="#contact" class="btn btn-outline-gold">Contact Us</a>
-                    <a href="https://wa.me/5920000000" class="btn btn-solid-gold">WhatsApp Us</a>
+                    <a href="https://wa.me/5920000000" class="btn btn-solid-gold" target="_blank" rel="noopener">WhatsApp Us</a>
                 </div>
             </nav>
         </div>
@@ -114,41 +112,47 @@
             </div>
 
             <div class="inventory-grid" id="inventory-grid">
-                <!-- Vehicle 1 -->
+                <!-- Vehicle 1: White Range Rover -->
                 <div class="vehicle-card" data-category="luxury">
-                    <div class="v-img placeholder-white"></div>
+                    <div class="v-img-container">
+                        <img src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&q=80&w=800" alt="White Range Rover Evoque" class="v-img">
+                    </div>
                     <div class="v-details">
                         <h3>Range Rover Evoque</h3>
                         <span class="v-color">White</span>
-                        <p>Premium compact luxury SUV • Excellent condition</p>
-                        <a href="#" class="btn btn-outline-gold block-btn">View Full Specs</a>
+                        <p>Premium compact luxury SUV • Excellent condition • Iconic presence</p>
+                        <a href="#contact" class="btn btn-outline-gold block-btn">View Details</a>
                     </div>
                 </div>
-                <!-- Vehicle 2 -->
+                <!-- Vehicle 2: Black BMW -->
                 <div class="vehicle-card" data-category="luxury">
-                    <div class="v-img placeholder-black"></div>
+                    <div class="v-img-container">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=800" alt="Black BMW X-Series" class="v-img">
+                    </div>
                     <div class="v-details">
                         <h3>BMW X-Series</h3>
                         <span class="v-color">Black</span>
-                        <p>Powerful performance with premium features • Iconic styling</p>
-                        <a href="#" class="btn btn-outline-gold block-btn">View Full Specs</a>
+                        <p>Powerful performance with premium features • Iconic executive styling</p>
+                        <a href="#contact" class="btn btn-outline-gold block-btn">View Details</a>
                     </div>
                 </div>
-                <!-- Vehicle 3 -->
+                <!-- Vehicle 3: Silver Toyota -->
                 <div class="vehicle-card" data-category="suv">
-                    <div class="v-img placeholder-silver"></div>
+                    <div class="v-img-container">
+                        <img src="https://images.unsplash.com/photo-1695662051221-50e8d08da3e0?auto=format&fit=crop&q=80&w=800" alt="Silver Toyota Fortuner / Hilux" class="v-img">
+                    </div>
                     <div class="v-details">
                         <h3>Toyota Fortuner / Hilux</h3>
                         <span class="v-color">Silver</span>
-                        <p>Rugged reliability meets modern comfort • Perfect for work or family</p>
-                        <a href="#" class="btn btn-outline-gold block-btn">View Full Specs</a>
+                        <p>Rugged reliability meets modern comfort • Perfect for tough work terrain or family trips</p>
+                        <a href="#contact" class="btn btn-outline-gold block-btn">View Details</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== RENTALS & SERVICES (SPLIT LAYOUT) ===== -->
+    <!-- ===== RENTALS & SERVICES ===== -->
     <section class="split-section" id="rentals">
         <div class="half rentals-half">
             <div class="half-content">
@@ -191,7 +195,7 @@
                 </address>
                 <p><strong>Opening Hours:</strong><br>Mon – Sat: 8:00 AM – 6:00 PM<br>Sun: By Appointment</p>
                 <div class="footer-links">
-                    <a href="https://www.bestautolegendrentals.com" target="_blank">www.bestautolegendrentals.com</a>
+                    <a href="https://www.bestautolegendrentals.com" target="_blank" rel="noopener">www.bestautolegendrentals.com</a>
                 </div>
             </div>
             
