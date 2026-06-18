@@ -4,145 +4,219 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Caricom Auto Sales | Guyana Used Car Exporter & Importer</title>
-    <meta name="description" content="Caricom is a trusted used car exporter and importer in Guyana, offering quality vehicles, competitive pricing, and reliable shipping services.">
-    <meta name="keywords" content="Guyana used cars, used car exporter Guyana, car importer Guyana, Caricom Auto Sales, global vehicle">
-    <meta name="csrf-token" content="wLhfrNgM4RLDRzgdf4wDKwxuRFx4zxK4hbrpwUXi">
-
-    <link rel="icon" href="https://www.caricomautosales.gy/images/favicon.ico">
+    <title>Best Auto Sales & Rentals | The BEST Deal in Guyana</title>
+    <meta name="description" content="Discover the BEST Deal, Price, Vehicle & Quality in Guyana. Wide selection of premium SUVs, Sedans, and Trucks.">
+    <meta name="keywords" content="Best Auto Sales Guyana, Car Rentals Mahaica, Buy Used Cars E.C.D., Range Rover for sale Guyana">
+    
     <link rel="stylesheet" href="style.css">
+    <!-- Using Google Fonts for a bold, luxurious automotive look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- ===== TOP NAVIGATION BAR ===== -->
-    <div class="top-bar">
-        <div class="container top-bar-row">
-            <div class="time-zones">
-                <div class="time-item">
-                    <span class="icon-clock"></span>
-                    <span>Japan: <strong id="timestr">Loading...</strong></span>
+    <!-- ===== HEADER NAVIGATION ===== -->
+    <header class="site-header" id="header">
+        <div class="container header-inner">
+            <div class="brand-logo">
+                <!-- Conceptual Logo representation using CSS for the gold wreath & car silhouette -->
+                <div class="logo-mark">
+                    <span class="wreath"></span>
+                    <span class="car-silhouette"></span>
                 </div>
-                <div class="time-item">
-                    <span class="icon-clock"></span>
-                    <span>Guyana: <strong id="guyanaTime">Loading...</strong></span>
+                <div class="brand-text">
+                    <h1>BEST AUTO</h1>
+                    <span>SALES & RENTALS</span>
                 </div>
             </div>
             
-            <div class="top-controls">
-                <div class="language-selector">
-                    <select id="language_trigger">
-                        <option value="">Select Language</option>
-                    </select>
-                </div>
-                <div class="auth-buttons">
-                    <a href="https://www.caricomautosales.gy/register" class="btn-auth"><span class="icon-signup"></span> Sign Up</a>
-                    <span class="divider">|</span>
-                    <a href="https://www.caricomautosales.gy/login?return_path=mypage" class="btn-auth"><span class="icon-login"></span> Login</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== MAIN HEADER & NAVIGATION ===== -->
-    <header class="main-header">
-        <div class="container main-header-row">
-            <div class="logo">
-                <a href="https://www.caricomautosales.gy/">
-                    <img src="https://www.caricomautosales.gy/images/logo.png" alt="Caricom Auto Sales Logo">
-                </a>
-            </div>
-            
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <button class="mobile-toggle" id="mobile-toggle">
                 <span></span><span></span><span></span>
             </button>
 
-            <nav class="navbar" id="navbar">
-                <ul class="nav-list">
-                    <li><a href="https://www.caricomautosales.gy/" class="nav-link active">Home</a></li>
-                    <li class="dropdown">
-                        <a href="https://www.caricomautosales.gy/stock-list" class="nav-link">Stock List <span class="arrow"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://www.caricomautosales.gy/stock-list?featured=1">Discount Cars</a></li>
-                            <li><a href="https://www.caricomautosales.gy/faq">FAQ</a></li>
-                            <li><a href="https://www.caricomautosales.gy/how-to-buy">How To Buy</a></li>
-                        </ul>
-                    </</li>
-                    <li class="dropdown">
-                        <a href="https://www.caricomautosales.gy/about-us" class="nav-link">About Us <span class="arrow"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://www.caricomautosales.gy/about-us">Company Profile</a></li>
-                            <li><a href="https://www.caricomautosales.gy/photo-gallery">Photo Gallery</a></li>
-                            <li><a href="https://www.caricomautosales.gy/bank-information">Bank Info</a></li>
-                            <li><a href="https://www.caricomautosales.gy/contact-us">Contact Us</a></li>
-                        </ul>
-                    </</li>
-                    <li><a href="https://www.caricomautosales.gy/inquiry" class="nav-link">Inquiry</a></li>
-                    <li><a href="https://www.caricomautosales.gy/contact-us" class="nav-link">Contact</a></li>
+            <nav class="main-nav" id="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#inventory">Inventory</a></li>
+                    <li><a href="#rentals">Rentals</a></li>
+                    <li><a href="#services">Services</a></li>
                 </ul>
+                <div class="nav-actions">
+                    <a href="#contact" class="btn btn-outline-gold">Contact Us</a>
+                    <a href="https://wa.me/5920000000" class="btn btn-solid-gold">WhatsApp Us</a>
+                </div>
             </nav>
-
-            <div class="header-whatsapp">
-                <a href="https://api.whatsapp.com/send?phone=5926108168&text=Hello,%20I%20want%20to%20buy%20cars%20from%20Japan." target="_blank" rel="noopener">
-                    <span class="icon-whatsapp"></span>
-                    <span class="phone-num">+592-610-8168</span>
-                </a>
-            </div>
         </div>
     </header>
 
-    <!-- ===== BANNER HERO SECTION ===== -->
-    <section class="hero-banner">
-        <a href="https://www.caricomautosales.gy/stock-list">
-            <img src="https://www.caricomautosales.gy/images/home/banner.jpg" alt="Caricom Auto Sales Banner">
-        </a>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h2 class="hero-title">BEST AUTO SALES & RENTALS</h2>
+            <h3 class="hero-subtitle">Our Name Says It All!</h3>
+            <p class="hero-desc">Discover the <strong>BEST</strong> Deal, Price, Vehicle & Quality in Guyana.<br>Whether you're buying or renting, we deliver excellence on wheels.</p>
+            <div class="hero-buttons">
+                <a href="#inventory" class="btn btn-solid-gold">Browse Our Inventory</a>
+                <a href="#rentals" class="btn btn-solid-orange">Rent a Vehicle Today</a>
+                <a href="#contact" class="btn btn-outline-light">Contact Us</a>
+            </div>
+        </div>
     </section>
 
-    <!-- ===== LATEST STOCK COMPONENT (SKELETON LOADER PRESETS) ===== -->
-    <section class="latest-stock">
+    <!-- ===== WHY CHOOSE US / ABOUT ===== -->
+    <section class="about-section" id="about">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Latest Arrivals</h2>
-                <a href="https://www.caricomautosales.gy/stock-list" class="view-all">View All Stock &rarr;</a>
-            </div>    
+            <div class="section-title-wrap">
+                <h2>About Best Auto Sales & Rentals</h2>
+                <p class="section-lead">At Best Auto Sales & Rentals, we pride ourselves on offering top-tier vehicles at unbeatable prices. From premium SUVs to reliable daily drivers, our selection guarantees:</p>
+                <h3 class="gold-text uppercase-banner">BEST DEAL • BEST PRICE • BEST VEHICLE • BEST QUALITY • BEST RENTAL</h3>
+            </div>
             
-            <div class="stock-grid" id="stockGrid">
-                <!-- Generating 4 structural UI skeleton cards dynamically loaded via JS -->
-                <div class="stock-card skeleton">
-                    <div class="sk-image"></div>
-                    <div class="sk-line long"></div>
-                    <div class="sk-line short"></div>
-                    <div class="sk-price"></div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon blue-icon"></div>
+                    <h4>Wide Selection</h4>
+                    <p>New and pre-owned vehicles including Range Rover, BMW, Toyota, and more.</p>
                 </div>
-                <div class="stock-card skeleton">
-                    <div class="sk-image"></div>
-                    <div class="sk-line long"></div>
-                    <div class="sk-line short"></div>
-                    <div class="sk-price"></div>
+                <div class="feature-card">
+                    <div class="icon gold-icon"></div>
+                    <h4>Competitive Pricing</h4>
+                    <p>Transparent deals with no hidden fees. Quality you can trust.</p>
                 </div>
-                <div class="stock-card skeleton">
-                    <div class="sk-image"></div>
-                    <div class="sk-line long"></div>
-                    <div class="sk-line short"></div>
-                    <div class="sk-price"></div>
+                <div class="feature-card">
+                    <div class="icon orange-icon"></div>
+                    <h4>Quality Assured</h4>
+                    <p>Every vehicle undergoes rigorous inspection before hitting the lot.</p>
                 </div>
-                <div class="stock-card skeleton">
-                    <div class="sk-image"></div>
-                    <div class="sk-line long"></div>
-                    <div class="sk-line short"></div>
-                    <div class="sk-price"></div>
+                <div class="feature-card">
+                    <div class="icon blue-icon"></div>
+                    <h4>Flexible Rentals</h4>
+                    <p>Short-term and long-term options for every need and budget.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== LAZY LOADED INJECTORS ===== -->
-    <div id="top_search"></div>
-    <div class="lazy-section" id="welcome_section"></div>
-    <div class="lazy-section" id="left_search_by_section"></div>
-    <div class="lazy-section" id="service_section"></div>
-    <div class="lazy-section" id="testimonial_section"></div>
-    <div class="lazy-section" id="why_choose_us_section"></div>
-    <footer id="footer" class="lazy-section"></footer>
+    <!-- ===== INVENTORY SECTION ===== -->
+    <section class="inventory-section" id="inventory">
+        <div class="container">
+            <div class="header-flex">
+                <div>
+                    <h2>Our Vehicle Inventory</h2>
+                    <p>Explore our handpicked selection of premium vehicles. New arrivals added weekly!</p>
+                </div>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="luxury">Luxury</button>
+                    <button class="filter-btn" data-filter="suv">SUVs/Trucks</button>
+                </div>
+            </div>
+
+            <div class="inventory-grid" id="inventory-grid">
+                <!-- Vehicle 1 -->
+                <div class="vehicle-card" data-category="luxury">
+                    <div class="v-img placeholder-white"></div>
+                    <div class="v-details">
+                        <h3>Range Rover Evoque</h3>
+                        <span class="v-color">White</span>
+                        <p>Premium compact luxury SUV • Excellent condition</p>
+                        <a href="#" class="btn btn-outline-gold block-btn">View Full Specs</a>
+                    </div>
+                </div>
+                <!-- Vehicle 2 -->
+                <div class="vehicle-card" data-category="luxury">
+                    <div class="v-img placeholder-black"></div>
+                    <div class="v-details">
+                        <h3>BMW X-Series</h3>
+                        <span class="v-color">Black</span>
+                        <p>Powerful performance with premium features • Iconic styling</p>
+                        <a href="#" class="btn btn-outline-gold block-btn">View Full Specs</a>
+                    </div>
+                </div>
+                <!-- Vehicle 3 -->
+                <div class="vehicle-card" data-category="suv">
+                    <div class="v-img placeholder-silver"></div>
+                    <div class="v-details">
+                        <h3>Toyota Fortuner / Hilux</h3>
+                        <span class="v-color">Silver</span>
+                        <p>Rugged reliability meets modern comfort • Perfect for work or family</p>
+                        <a href="#" class="btn btn-outline-gold block-btn">View Full Specs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RENTALS & SERVICES (SPLIT LAYOUT) ===== -->
+    <section class="split-section" id="rentals">
+        <div class="half rentals-half">
+            <div class="half-content">
+                <h2>Vehicle Rental Services</h2>
+                <p>Need a car for a day, a week, or a month? Best Auto Sales & Rentals offers flexible, affordable rental solutions tailored to your needs.</p>
+                <ul class="check-list">
+                    <li>Competitive daily, weekly, and monthly rates</li>
+                    <li>Well-maintained, late-model vehicles</li>
+                    <li>Comprehensive insurance options</li>
+                    <li>Easy pickup and drop-off at our Mahaica location</li>
+                </ul>
+                <a href="#contact" class="btn btn-solid-gold mt-4">Reserve Your Vehicle</a>
+            </div>
+        </div>
+        <div class="half services-half" id="services">
+            <div class="half-content">
+                <h2>Our Services</h2>
+                <div class="service-list">
+                    <div class="service-item"><strong>Vehicle Sales</strong> – New & Pre-owned</div>
+                    <div class="service-item"><strong>Vehicle Rentals</strong> – Flexible terms</div>
+                    <div class="service-item"><strong>Trade-Ins</strong> – Upgrade your current vehicle</div>
+                    <div class="service-item"><strong>Financing Assistance</strong> – Easy approval options</div>
+                    <div class="service-item"><strong>Vehicle Inspections & Detailing</strong></div>
+                    <div class="service-item"><strong>After-Sales Support</strong></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT FOOTER ===== -->
+    <footer class="site-footer" id="contact">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <h2>Get In Touch With Us</h2>
+                <p class="tagline">Where Quality Meets Affordability.</p>
+                <address>
+                    <strong>Location:</strong><br>
+                    Lot 7 North, Hand-En-Veldt, Mahaica<br>
+                    East Coast Demerara (E.C.D.), Guyana
+                </address>
+                <p><strong>Opening Hours:</strong><br>Mon – Sat: 8:00 AM – 6:00 PM<br>Sun: By Appointment</p>
+                <div class="footer-links">
+                    <a href="https://www.bestautolegendrentals.com" target="_blank">www.bestautolegendrentals.com</a>
+                </div>
+            </div>
+            
+            <div class="footer-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group flex-group">
+                        <input type="email" placeholder="Email Address" required>
+                        <input type="tel" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" placeholder="Message (e.g., Interested in purchasing or Rental inquiry)" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-solid-gold full-width">Send Message</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Best Auto Sales & Rentals. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="main.js"></script>
 </body>
