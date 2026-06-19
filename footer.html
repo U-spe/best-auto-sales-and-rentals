@@ -1,0 +1,131 @@
+<style>
+    /* Specific styles for new footer elements */
+    .footer-grid-3 {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 60px;
+    }
+    .newsletter-form .flex-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .newsletter-form input {
+        flex: 1;
+        padding: 12px 16px;
+        background: var(--bg-panel, #121212);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: white;
+        border-radius: 4px;
+        outline: none;
+    }
+    .newsletter-form input:focus {
+        border-color: var(--gold, #D4AF37);
+    }
+    .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 50%;
+        color: white;
+        transition: var(--transition, 0.3s);
+    }
+    .social-icon:hover {
+        background: #1877F2; /* Facebook Blue */
+        transform: translateY(-3px);
+    }
+    .social-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+    }
+    .bottom-nav-links {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .bottom-nav-links a {
+        color: var(--text-muted, #9ca3af);
+        transition: var(--transition, 0.3s);
+    }
+    .bottom-nav-links a:hover, .bottom-nav-links a.active-route-token {
+        color: var(--gold, #D4AF37);
+        padding-left: 8px;
+    }
+    @media (max-width: 992px) {
+        .footer-grid-3 {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+    }
+</style>
+
+<footer class="site-footer" id="contact">
+    <div class="container footer-grid-3">
+        
+        <div class="footer-info">
+            <h2>Stay Updated</h2>
+            <p class="tagline">Subscribe to our newsletter for the latest arrivals and exclusive rental deals.</p>
+            
+            <form action="https://formspree.io/f/xaqzgkvq" method="POST" class="newsletter-form">
+                <div class="flex-group">
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-solid-gold">Subscribe</button>
+                </div>
+            </form>
+
+            <div class="social-links">
+                <a href="https://facebook.com/bestautoguayana" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+                    <svg viewBox="0 0 320 512">
+                        <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-nav">
+            <h2>Quick Links</h2>
+            <ul class="bottom-nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/about.html" class="nav-link">About Us</a></li>
+                <li><a href="/#inventory" class="nav-link">Vehicle Inventory</a></li>
+                <li><a href="/#rentals" class="nav-link">Rental Services</a></li>
+                <li><a href="/#contact" class="nav-link">Contact Us</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-contact">
+            <h2>Contact Us</h2>
+            <address style="color: var(--text-muted, #9ca3af); font-style: normal; margin-bottom: 15px; line-height: 1.8;">
+                Lot 7 North, Hand-En-Veldt, Mahaica<br>
+                East Coast Demerara, Guyana
+            </address>
+            <p style="color: var(--text-muted, #9ca3af); margin-bottom: 10px;">
+                <strong>WhatsApp / Call:</strong><br>
+                <a href="https://wa.me/5926629946" style="color: white;">+592-662-9946</a>
+            </p>
+            <p style="color: var(--text-muted, #9ca3af);">
+                <strong>Website:</strong><br>
+                <a href="https://www.bestautolegendrentals.com" target="_blank" rel="noopener" style="color: var(--gold, #D4AF37);">bestautolegendrentals.com</a>
+            </p>
+        </div>
+
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2026 Best Auto Sales & Rentals. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
