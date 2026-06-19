@@ -60,9 +60,60 @@
     text-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-/* --- Mission & Split Layout --- */
-.mission-section {
-    padding: 120px 0;
+/* --- Mission & Vision Section (NEW) --- */
+.mission-vision-section {
+    padding: 100px 0 40px;
+    background-color: var(--bg-dark, #0a0a0a);
+}
+
+.mv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.mv-card {
+    background: var(--bg-panel, #121212);
+    padding: 50px 40px;
+    border-radius: 8px;
+    border-top: 3px solid var(--gold, #D4AF37);
+    position: relative;
+    transform-style: preserve-3d;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.mv-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    color: var(--gold, #D4AF37);
+}
+
+.mv-icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+.mv-card h3 {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.mv-card p {
+    color: var(--text-muted, #9ca3af);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* --- Layouts & Typography (Shared) --- */
+.story-section {
+    padding: 80px 0 120px;
     background-color: var(--bg-dark, #0a0a0a);
 }
 
@@ -73,6 +124,10 @@
     flex-wrap: wrap;
 }
 
+.reverse-layout {
+    flex-direction: row-reverse;
+}
+
 .text-block {
     flex: 1 1 500px;
 }
@@ -81,6 +136,7 @@
     font-size: 2.8rem;
     color: white;
     margin-bottom: 25px;
+    line-height: 1.2;
 }
 
 .text-block p {
@@ -90,6 +146,7 @@
     line-height: 1.8;
 }
 
+/* --- Stats Grid --- */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -118,6 +175,41 @@
     letter-spacing: 1px;
 }
 
+/* --- Owner Section (NEW) --- */
+.owner-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #111 0%, #0a0a0a 100%);
+    border-top: 1px solid rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.owner-title {
+    color: var(--gold, #D4AF37);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.owner-quote {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: white;
+    border-left: 4px solid var(--gold, #D4AF37);
+    padding-left: 25px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.signature {
+    font-family: "Brush Script MT", cursive, sans-serif;
+    font-size: 2.5rem;
+    color: var(--gold, #D4AF37);
+    margin-top: 30px;
+    transform: rotate(-5deg);
+    display: inline-block;
+}
+
 /* --- 3D Image Cards & Movement --- */
 .image-block {
     flex: 1 1 400px;
@@ -131,6 +223,10 @@
     transform-style: preserve-3d;
     box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
     border: 1px solid rgba(255,255,255,0.05);
+}
+
+.owner-image-wrap {
+    height: 600px; /* Taller card for portrait aspect */
 }
 
 .image-card img, .gallery-item img {
@@ -157,7 +253,7 @@
 
 /* --- Fleet Gallery Grid --- */
 .fleet-gallery {
-    padding: 0 0 120px 0;
+    padding: 120px 0;
     background-color: var(--bg-dark, #0a0a0a);
 }
 
@@ -216,8 +312,15 @@
 .fade-up { transform: translateY(40px) scale(0.95); }
 
 /* Responsive adjustments */
+@media (max-width: 992px) {
+    .split-layout.reverse-layout { flex-direction: column; }
+    .owner-image-wrap { height: 400px; }
+}
+
 @media (max-width: 768px) {
     .massive-title { font-size: 2.8rem; }
-    .split-layout { gap: 40px; }
+    .split-layout { gap: 40px; flex-direction: column; }
     .stats-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+    .mv-grid { grid-template-columns: 1fr; }
+    .text-block h2 { font-size: 2.3rem; }
 }
