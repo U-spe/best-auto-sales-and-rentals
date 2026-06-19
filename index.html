@@ -12,39 +12,8 @@
 </head>
 <body>
 
-    <header class="site-header" id="header">
-        <div class="container header-inner">
-            <div class="brand-logo">
-                <div class="logo-mark">
-                    <span class="wreath"></span>
-                    <span class="car-silhouette"></span>
-                </div>
-                <div class="brand-text">
-                    <h1>BEST AUTO</h1>
-                    <span>SALES & RENTALS</span>
-                </div>
-            </div>
-            
-            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
-                <span></span><span></span><span></span>
-            </button>
-
-            <nav class="main-nav" id="main-nav">
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/sales">Sales</a></li>
-                    <li><a href="/rentals">Rentals</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-                <div class="nav-actions">
-                    <a href="#contact" class="btn btn-outline-gold">Contact Us</a>
-                    <a href="https://wa.me/5926629946" class="btn btn-solid-gold" target="_blank" rel="noopener">WhatsApp Us</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
+    <div id="global-header"></div>
+    
     <section class="hero" id="home">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
@@ -172,45 +141,7 @@
         </div>
     </section>
 
-    <footer class="site-footer" id="contact">
-        <div class="container footer-grid">
-            <div class="footer-info">
-                <h2>Get In Touch With Us</h2>
-                <p class="tagline">Where Quality Meets Affordability.</p>
-                <address>
-                    <strong>Location:</strong><br>
-                    Lot 7 North, Hand-En-Veldt, Mahaica<br>
-                    East Coast Demerara (E.C.D.), Guyana
-                </address>
-                <p><strong>WhatsApp / Call:</strong> +592-662-9946</p>
-                <p><strong>Opening Hours:</strong><br>Mon – Sat: 9:00 AM – 5:00 PM<br>Sun: By Appointment</p>
-                <div class="footer-links">
-                    <a href="mailto:bestautosalesandrentals@gmail.com" target="_blank" rel="noopener">bestautosalesandrentals@gmail.com</a>
-                </div>
-            </div>
-            
-            <div class="footer-form">
-                <form action="https://formspree.io/f/xaqzgkvq" method="POST" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group flex-group">
-                        <input type="email" name="email" placeholder="Email Address" required>
-                        <input type="tel" name="phone" placeholder="Phone Number" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" rows="4" placeholder="Message (e.g., Interested in purchasing or Rental inquiry)" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-solid-gold full-width">Send Message</button>
-                </form>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2026 Best Auto Sales & Rentals. All rights reserved. Website Designed And Created By Web Creation Studios.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="global-footer"></div>
 
     <a href="https://api.whatsapp.com/send/?phone=5926629946&text&type=phone_number&app_absent=0" class="whatsapp-widget" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -218,6 +149,7 @@
         </svg>
     </a>
 
+    <script src="js/he-fo.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
