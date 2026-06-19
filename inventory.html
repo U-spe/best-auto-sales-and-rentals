@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inventory | Best Auto Sales & Rentals</title>
+    
+    <!-- Link to global styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Link to Inventory page specific styles -->
+    <link rel="stylesheet" href="css/inventory.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Dynamic Header Injected via he-fo.js -->
+    <div id="global-header"></div>
+
+    <main class="inventory-page-wrapper">
+        
+        <!-- ===== HERO SECTION ===== -->
+        <section class="inventory-hero">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1503376712353-81b4f4c3cb3d?auto=format&fit=crop&q=80&w=1920" alt="Fleet of cars" class="parallax-img">
+            </div>
+            <div class="hero-overlay-dark"></div>
+            <div class="container hero-text-container reveal-on-scroll">
+                <span class="gold-subtitle">Premium Selection</span>
+                <h1 class="massive-title">OUR INVENTORY</h1>
+                <p class="hero-desc">Explore our top-tier collection. Click any vehicle for full specifications.</p>
+            </div>
+        </section>
+
+        <!-- ===== INVENTORY GRID (50 CARDS) ===== -->
+        <section class="inventory-section">
+            <div class="container">
+                <!-- The 50 cards will be injected here via inventory.js -->
+                <div class="grid-container" id="inventory-grid"></div>
+            </div>
+        </section>
+
+        <!-- ===== BRAND LOGO CAROUSEL ===== -->
+        <!-- Clean, pure CSS rebuild of your Elementor slider -->
+        <section class="brand-carousel-section">
+            <div class="container">
+                <div class="text-center">
+                    <span class="gold-subtitle">Trusted Brands</span>
+                    <h2 style="color: white; margin-bottom: 40px;">Vehicles We Carry</h2>
+                </div>
+            </div>
+            <div class="marquee-wrapper">
+                <div class="marquee-track">
+                    <!-- Extracted from your snippet -->
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/logo-Mercedes-Benz.png" alt="Mercedes">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Neoplan-Logo-PNG_007-1.png" alt="Neoplan">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Volkswagen-Logo-768x432-1.png" alt="Volkswagen">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Toyota-Logo-768x432-1.png" alt="Toyota">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Suzuki-Logo-768x432-1.png" alt="Suzuki">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Mitsubishi-Logo-1-768x432-1.png" alt="Mitsubishi">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Logo-Mazda-768x432-1.png" alt="Mazda">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Logo-Land-Rover-768x432-1.png" alt="Land Rover">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Lexus-Logo-PNG_001.png" alt="Lexus">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Jeep-Logo-768x432-1.png" alt="Jeep">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Honda-Logo.png" alt="Honda">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Ford-Logo-768x432-1.png" alt="Ford">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/BMW-Logо-768x432-1.png" alt="BMW">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Audi-Logo-1995.png" alt="Audi">
+                    
+                    <!-- Duplicated for infinite scroll loop effect -->
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/logo-Mercedes-Benz.png" alt="Mercedes">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Neoplan-Logo-PNG_007-1.png" alt="Neoplan">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Volkswagen-Logo-768x432-1.png" alt="Volkswagen">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Toyota-Logo-768x432-1.png" alt="Toyota">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Suzuki-Logo-768x432-1.png" alt="Suzuki">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Mitsubishi-Logo-1-768x432-1.png" alt="Mitsubishi">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Logo-Mazda-768x432-1.png" alt="Mazda">
+                    <img src="https://bmsoat.com/wp-content/uploads/2025/01/Logo-Land-Rover-768x432-1.png" alt="Land Rover">
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT CTA ===== -->
+        <section class="contact-cta-section reveal-on-scroll slide-up">
+            <div class="container text-center cta-box">
+                <h2>Didn't find what you're looking for?</h2>
+                <p>We source custom vehicles on demand. Contact our team to let us know exactly what you need.</p>
+                <a href="/#contact" class="btn btn-solid-gold huge-cta-btn">Contact Us Today</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Dynamic Footer Injected via he-fo.js -->
+    <div id="global-footer"></div>
+
+    <!-- Core Asset Pipeline & Routing -->
+    <script src="js/he-fo.js"></script>
+    
+    <!-- Inventory Page Logic & Animations -->
+    <script src="js/inventory.js"></script>
+</body>
+</html>
