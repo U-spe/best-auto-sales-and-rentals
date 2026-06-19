@@ -65,7 +65,7 @@
     margin-top: 20px;
 }
 
-/* --- Inventory Grid --- */
+/* --- Inventory Section & 5-Column Grid --- */
 .inventory-section {
     padding: 80px 0;
     background-color: var(--bg-dark, #0a0a0a);
@@ -73,11 +73,17 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(5, 1fr); /* Force 5 across on wide displays */
+    gap: 20px;
 }
 
-/* --- Inventory Card Styles --- */
+/* Responsive breakdowns for rows */
+@media (max-width: 1400px) { .grid-container { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 1100px) { .grid-container { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px)  { .grid-container { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .grid-container { grid-template-columns: 1fr; } }
+
+/* --- Centered Card Setup --- */
 .inv-card {
     background: var(--bg-panel, #121212);
     border: 1px solid rgba(255,255,255,0.05);
@@ -100,10 +106,9 @@
     color: inherit;
 }
 
-/* Image Placeholder Box */
 .img-placeholder {
     width: 100%;
-    height: 200px;
+    height: 180px;
     background: #1a1a1a;
     display: flex;
     align-items: center;
@@ -116,16 +121,15 @@
 .img-placeholder span {
     color: #444;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* Hover Overlay for Details */
 .hover-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(212, 175, 55, 0.9); /* Gold overlay */
+    background: rgba(212, 175, 55, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -136,7 +140,7 @@
 .hover-overlay p {
     color: #000;
     font-weight: 900;
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-transform: uppercase;
     transform: translateY(20px);
     transition: transform 0.3s ease;
@@ -145,39 +149,45 @@
 .inv-card:hover .hover-overlay { opacity: 1; }
 .inv-card:hover .hover-overlay p { transform: translateY(0); }
 
-/* Card Content Area */
+/* Centered content block under image */
 .inv-details {
-    padding: 25px 20px;
+    padding: 20px 15px;
+    text-align: center; 
 }
 
 .inv-details h3 {
     color: white;
-    font-size: 1.4rem;
+    font-size: 1.15rem;
     margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .inv-specs {
     color: var(--text-muted, #9ca3af);
-    font-size: 0.9rem;
-    margin-bottom: 25px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
 }
 
-/* Buy & Rent Buttons */
+/* Centered Actions */
 .inv-actions {
     display: flex;
-    gap: 15px;
+    gap: 10px;
+    justify-content: center; 
 }
 
 .btn-half {
     flex: 1;
+    max-width: 100px;
     text-align: center;
-    padding: 12px 0;
+    padding: 10px 0;
     font-weight: 700;
     text-transform: uppercase;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .btn-buy {
@@ -203,7 +213,40 @@
     color: #000;
 }
 
-/* --- Brand Logo Carousel (Pure CSS Marquee) --- */
+/* --- Centered Load More Controls --- */
+.load-more-container {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-load-more {
+    background: transparent;
+    color: var(--gold, #D4AF37);
+    border: 2px solid var(--gold, #D4AF37);
+    padding: 14px 40px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-load-more:hover {
+    background: var(--gold, #D4AF37);
+    color: black;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Hidden state class applied via JS pagination */
+.is-hidden {
+    display: none !important;
+}
+
+/* --- Brand Logo Carousel --- */
 .brand-carousel-section {
     padding: 80px 0;
     background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
@@ -218,7 +261,6 @@
     padding: 20px 0;
 }
 
-/* Gradient fades on the edges of the marquee */
 .marquee-wrapper::before,
 .marquee-wrapper::after {
     content: '';
@@ -228,71 +270,45 @@
     height: 100%;
     z-index: 2;
 }
-.marquee-wrapper::before {
-    left: 0;
-    background: linear-gradient(to right, #111 0%, transparent 100%);
-}
-.marquee-wrapper::after {
-    right: 0;
-    background: linear-gradient(to left, #111 0%, transparent 100%);
-}
+.marquee-wrapper::before { left: 0; background: linear-gradient(to right, #111 0%, transparent 100%); }
+.marquee-wrapper::after { right: 0; background: linear-gradient(to left, #111 0%, transparent 100%); }
 
 .marquee-track {
     display: flex;
-    width: calc(200px * 22); /* Total width of images */
+    width: calc(200px * 22);
     animation: scrollMarquee 30s linear infinite;
     align-items: center;
 }
 
-.marquee-track:hover {
-    animation-play-state: paused;
-}
+.marquee-track:hover { animation-play-state: paused; }
 
 .marquee-track img {
-    width: 160px;
+    width: 140px;
     height: auto;
     object-fit: contain;
-    margin: 0 40px;
-    filter: grayscale(100%) brightness(200%); /* Makes logos white/gray to fit dark theme */
+    margin: 0 35px;
+    filter: grayscale(100%) brightness(200%);
     opacity: 0.6;
     transition: all 0.3s ease;
 }
 
-.marquee-track img:hover {
-    filter: grayscale(0%) brightness(100%);
-    opacity: 1;
-}
+.marquee-track img:hover { filter: grayscale(0%) brightness(100%); opacity: 1; }
 
 @keyframes scrollMarquee {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-240px * 11)); /* Shifts by half the items to loop perfectly */ }
+    100% { transform: translateX(calc(-240px * 11)); }
 }
 
 /* --- Contact CTA --- */
-.contact-cta-section {
-    padding: 80px 0 100px;
-    background-color: #111;
-}
-
+.contact-cta-section { padding: 80px 0 100px; background-color: #111; }
 .cta-box {
     background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(0,0,0,0) 100%);
     border: 1px solid rgba(212, 175, 55, 0.2);
     padding: 60px 40px;
     border-radius: 12px;
 }
-
-.cta-box h2 {
-    font-size: 2.5rem;
-    color: white;
-    margin-bottom: 15px;
-}
-
-.cta-box p {
-    font-size: 1.2rem;
-    color: var(--text-muted, #9ca3af);
-    margin-bottom: 35px;
-}
-
+.cta-box h2 { font-size: 2.5rem; color: white; margin-bottom: 15px; }
+.cta-box p { font-size: 1.2rem; color: var(--text-muted, #9ca3af); margin-bottom: 35px; }
 .huge-cta-btn {
     font-size: 1.1rem;
     padding: 18px 45px;
@@ -305,15 +321,11 @@
     border: 2px solid var(--gold, #D4AF37);
     transition: all 0.3s ease;
 }
-.huge-cta-btn:hover {
-    background: transparent;
-    color: var(--gold, #D4AF37);
-}
+.huge-cta-btn:hover { background: transparent; color: var(--gold, #D4AF37); }
 
-/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
     .massive-title { font-size: 2.8rem; }
     .cta-box h2 { font-size: 2rem; }
-    .marquee-track img { width: 120px; margin: 0 20px; }
+    .marquee-track img { width: 110px; margin: 0 15px; }
     .marquee-wrapper::before, .marquee-wrapper::after { width: 50px; }
 }
