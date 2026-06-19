@@ -2,7 +2,17 @@
    BEST AUTO SALES - INVENTORY PAGE STYLES
 ==================================================== */
 
-/* --- Hero Section --- */
+/* --- Forced Structural Realignment Utilities --- */
+.text-center-forced {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+/* --- Hero Section (Guaranteed Center) --- */
 .inventory-hero {
     position: relative;
     height: 60vh;
@@ -38,7 +48,14 @@
 .hero-text-container {
     position: relative;
     z-index: 3;
-    text-align: center;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .gold-subtitle {
@@ -49,6 +66,7 @@
     font-weight: 700;
     display: block;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .massive-title {
@@ -57,12 +75,14 @@
     line-height: 1.1;
     color: #ffffff;
     text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    text-align: center;
 }
 
 .hero-desc {
     color: var(--text-muted, #9ca3af);
     font-size: 1.2rem;
     margin-top: 20px;
+    text-align: center;
 }
 
 /* --- Inventory Section & 5-Column Grid --- */
@@ -73,17 +93,16 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Force 5 across on wide displays */
+    grid-template-columns: repeat(5, 1fr); 
     gap: 20px;
 }
 
-/* Responsive breakdowns for rows */
 @media (max-width: 1400px) { .grid-container { grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 1100px) { .grid-container { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px)  { .grid-container { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px)  { .grid-container { grid-template-columns: 1fr; } }
 
-/* --- Centered Card Setup --- */
+/* --- Centered Card Details --- */
 .inv-card {
     background: var(--bg-panel, #121212);
     border: 1px solid rgba(255,255,255,0.05);
@@ -149,7 +168,6 @@
 .inv-card:hover .hover-overlay { opacity: 1; }
 .inv-card:hover .hover-overlay p { transform: translateY(0); }
 
-/* Centered content block under image */
 .inv-details {
     padding: 20px 15px;
     text-align: center; 
@@ -170,7 +188,6 @@
     margin-bottom: 20px;
 }
 
-/* Centered Actions */
 .inv-actions {
     display: flex;
     gap: 10px;
@@ -241,10 +258,7 @@
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
-/* Hidden state class applied via JS pagination */
-.is-hidden {
-    display: none !important;
-}
+.is-hidden { display: none !important; }
 
 /* --- Brand Logo Carousel --- */
 .brand-carousel-section {
@@ -299,16 +313,88 @@
     100% { transform: translateX(calc(-240px * 11)); }
 }
 
-/* --- Contact CTA --- */
-.contact-cta-section { padding: 80px 0 100px; background-color: #111; }
+/* --- ADDED SECTION: Features & Perks Layout --- */
+.features-perks-section {
+    padding: 100px 0;
+    background-color: #0d0d0d;
+    border-top: 1px solid rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.feature-item {
+    background: #141414;
+    padding: 40px 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.03);
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.feature-item:hover {
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    color: var(--gold, #D4AF37);
+    margin-bottom: 20px;
+}
+
+.feature-item h3 {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.feature-item p {
+    color: var(--text-muted, #9ca3af);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .features-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+
+/* --- Contact CTA (Guaranteed Center Alignment) --- */
+.contact-cta-section {
+    padding: 100px 0;
+    background-color: #111;
+}
+
 .cta-box {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(0,0,0,0) 100%);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(0,0,0,0) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
     padding: 60px 40px;
     border-radius: 12px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
-.cta-box h2 { font-size: 2.5rem; color: white; margin-bottom: 15px; }
-.cta-box p { font-size: 1.2rem; color: var(--text-muted, #9ca3af); margin-bottom: 35px; }
+
+.cta-box h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.cta-box p {
+    font-size: 1.2rem;
+    color: var(--text-muted, #9ca3af);
+    margin-bottom: 35px;
+    text-align: center;
+}
+
 .huge-cta-btn {
     font-size: 1.1rem;
     padding: 18px 45px;
@@ -321,7 +407,10 @@
     border: 2px solid var(--gold, #D4AF37);
     transition: all 0.3s ease;
 }
-.huge-cta-btn:hover { background: transparent; color: var(--gold, #D4AF37); }
+.huge-cta-btn:hover {
+    background: transparent;
+    color: var(--gold, #D4AF37);
+}
 
 @media (max-width: 768px) {
     .massive-title { font-size: 2.8rem; }
