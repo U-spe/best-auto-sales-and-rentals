@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Us | Best Auto Sales & Rentals</title>
+    
+    <!-- Link to global styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Link to Contact page specific styles -->
+    <link rel="stylesheet" href="css/contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Dynamic Header Injected via he-fo.js -->
+    <div id="global-header"></div>
+
+    <main class="contact-page-wrapper">
+        
+        <!-- ===== HERO SECTION ===== -->
+        <section class="contact-hero">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=1920" alt="Luxury car showroom" class="parallax-img">
+            </div>
+            <div class="hero-overlay-dark"></div>
+            <div class="container hero-text-container reveal-on-scroll">
+                <span class="gold-subtitle">Get In Touch</span>
+                <h1 class="massive-title">CONNECT WITH US</h1>
+                <p class="hero-desc">Have questions about acquiring or renting a premium asset? Drop us a line below.</p>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT FORM & INFO SECTION ===== -->
+        <section class="contact-section">
+            <div class="container unique-contact-container">
+                
+                <!-- Centered Contact Information Blocks -->
+                <div class="contact-info-grid reveal-on-scroll slide-up">
+                    <div class="info-block">
+                        <div class="info-icon">📍</div>
+                        <h3>Showroom Location</h3>
+                        <p>Smyrna, Delaware</p>
+                    </div>
+                    <div class="info-block">
+                        <div class="info-icon">📞</div>
+                        <h3>Direct Hotline</h3>
+                        <p>(302) 555-0199</p>
+                    </div>
+                    <div class="info-block">
+                        <div class="info-icon">✉️</div>
+                        <h3>Digital Concierge</h3>
+                        <p>concierge@bestautosales.com</p>
+                    </div>
+                </div>
+
+                <!-- Form Card Block -->
+                <div class="form-card-wrapper reveal-on-scroll slide-up">
+                    <form id="premium-contact-form" class="contact-form">
+                        
+                        <div class="form-row-two">
+                            <div class="form-group">
+                                <label for="form-name">Full Name</label>
+                                <input type="text" id="form-name" name="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email">Email Address</label>
+                                <input type="email" id="form-email" name="email" placeholder="johndoe@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row-two">
+                            <div class="form-group">
+                                <label for="form-phone">Phone Number</label>
+                                <input type="tel" id="form-phone" name="phone" placeholder="(302) 555-0100">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-intent">Inquiry Type</label>
+                                <select id="form-intent" name="intent" required>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="buy">Vehicle Purchasing</option>
+                                    <option value="rent">Vehicle Rentals</option>
+                                    <option value="custom">Custom Sourcing Request</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-message">Your Message</label>
+                            <textarea id="form-message" name="message" rows="6" placeholder="Describe the vehicle profile or service structures you are seeking..." required></textarea>
+                        </div>
+
+                        <!-- Interactive Status Notifications Container -->
+                        <div id="form-status" class="form-status-msg is-hidden"></div>
+
+                        <div class="form-submit-container">
+                            <button type="submit" id="form-submit-btn" class="btn-submit-gold">Send Premium Request</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Dynamic Footer Injected via he-fo.js -->
+    <div id="global-footer"></div>
+
+    <script src="js/he-fo.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
