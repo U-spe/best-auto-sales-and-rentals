@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/main.css">
     <!-- Link to Inventory page specific styles -->
     <link rel="stylesheet" href="css/inventory.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght=300;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -31,16 +31,20 @@
             </div>
         </section>
 
-        <!-- ===== INVENTORY GRID (50 CARDS) ===== -->
+        <!-- ===== INVENTORY GRID SECTION ===== -->
         <section class="inventory-section">
             <div class="container">
-                <!-- The 50 cards will be injected here via inventory.js -->
+                <!-- 5-Column Grid -->
                 <div class="grid-container" id="inventory-grid"></div>
+                
+                <!-- Centered Pagination Control -->
+                <div class="load-more-container">
+                    <button id="load-more-btn" class="btn-load-more">Load More Vehicles</button>
+                </div>
             </div>
         </section>
 
         <!-- ===== BRAND LOGO CAROUSEL ===== -->
-        <!-- Clean, pure CSS rebuild of your Elementor slider -->
         <section class="brand-carousel-section">
             <div class="container">
                 <div class="text-center">
@@ -50,7 +54,6 @@
             </div>
             <div class="marquee-wrapper">
                 <div class="marquee-track">
-                    <!-- Extracted from your snippet -->
                     <img src="https://bmsoat.com/wp-content/uploads/2025/01/logo-Mercedes-Benz.png" alt="Mercedes">
                     <img src="https://bmsoat.com/wp-content/uploads/2025/01/Neoplan-Logo-PNG_007-1.png" alt="Neoplan">
                     <img src="https://bmsoat.com/wp-content/uploads/2025/01/Volkswagen-Logo-768x432-1.png" alt="Volkswagen">
@@ -66,7 +69,7 @@
                     <img src="https://bmsoat.com/wp-content/uploads/2025/01/BMW-Logо-768x432-1.png" alt="BMW">
                     <img src="https://bmsoat.com/wp-content/uploads/2025/01/Audi-Logo-1995.png" alt="Audi">
                     
-                    <!-- Duplicated for infinite scroll loop effect -->
+                    <!-- Duplicated Loop Assets -->
                     <img src="https://bmsoat.com/wp-content/uploads/2025/01/logo-Mercedes-Benz.png" alt="Mercedes">
                     <img src="https://bmsoat.com/wp-content/uploads/2025/01/Neoplan-Logo-PNG_007-1.png" alt="Neoplan">
                     <img src="https://bmsoat.com/wp-content/uploads/2025/01/Volkswagen-Logo-768x432-1.png" alt="Volkswagen">
@@ -84,7 +87,7 @@
             <div class="container text-center cta-box">
                 <h2>Didn't find what you're looking for?</h2>
                 <p>We source custom vehicles on demand. Contact our team to let us know exactly what you need.</p>
-                <a href="/#contact" class="btn btn-solid-gold huge-cta-btn">Contact Us Today</a>
+                <a href="/contact" class="btn btn-solid-gold huge-cta-btn">Contact Us Today</a>
             </div>
         </section>
 
@@ -93,10 +96,7 @@
     <!-- Dynamic Footer Injected via he-fo.js -->
     <div id="global-footer"></div>
 
-    <!-- Core Asset Pipeline & Routing -->
     <script src="js/he-fo.js"></script>
-    
-    <!-- Inventory Page Logic & Animations -->
     <script src="js/inventory.js"></script>
 </body>
 </html>
