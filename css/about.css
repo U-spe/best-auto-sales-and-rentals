@@ -60,7 +60,28 @@
     text-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-/* --- Mission & Vision Section (NEW) --- */
+/* Base button styling incase it isn't pulled from main.css yet */
+.btn-solid-gold {
+    display: inline-block;
+    background-color: var(--gold, #D4AF37);
+    color: #000;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px 35px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid var(--gold, #D4AF37);
+}
+
+.btn-solid-gold:hover {
+    background-color: transparent;
+    color: var(--gold, #D4AF37);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* --- Mission & Vision Section --- */
 .mission-vision-section {
     padding: 100px 0 40px;
     background-color: var(--bg-dark, #0a0a0a);
@@ -175,7 +196,7 @@
     letter-spacing: 1px;
 }
 
-/* --- Owner Section (NEW) --- */
+/* --- Owner Section --- */
 .owner-section {
     padding: 100px 0;
     background: linear-gradient(135deg, #111 0%, #0a0a0a 100%);
@@ -226,7 +247,7 @@
 }
 
 .owner-image-wrap {
-    height: 600px; /* Taller card for portrait aspect */
+    height: 600px; 
 }
 
 .image-card img, .gallery-item img {
@@ -292,6 +313,39 @@
 .gallery-item:hover .item-overlay { bottom: 0; opacity: 1; }
 .3d-card:hover .card-glare { opacity: 1; }
 
+/* --- About Page CTA Banner --- */
+.about-cta-section {
+    padding: 80px 0 100px;
+    background-color: var(--bg-dark, #0a0a0a);
+}
+
+.cta-box {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(0,0,0,0) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 60px 40px;
+    border-radius: 12px;
+}
+
+.cta-box h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.cta-box p {
+    font-size: 1.2rem;
+    color: var(--text-muted, #9ca3af);
+    margin-bottom: 35px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.huge-cta-btn {
+    font-size: 1.1rem;
+    padding: 18px 45px;
+}
+
 /* --- Scroll Reveal Animation Classes --- */
 .reveal-on-scroll {
     opacity: 0;
@@ -323,4 +377,5 @@
     .stats-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
     .mv-grid { grid-template-columns: 1fr; }
     .text-block h2 { font-size: 2.3rem; }
+    .cta-box h2 { font-size: 2rem; }
 }
