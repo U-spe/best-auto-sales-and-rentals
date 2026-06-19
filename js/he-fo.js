@@ -137,12 +137,12 @@ function mountDynamicFavicons() {
             rel: "icon",
             type: "image/png",
             sizes: "16x16",
-            href: "/images/logos/favicon-16x16.png"
+            href: "/images/logos/favicon-16x16.jpg"
         },
 
         {
             rel: "shortcut icon",
-            href: "/images/logos/wcs-logo.png"
+            href: "/images/logos/favicon.jpg"
         }
 
     ];
