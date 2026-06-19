@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>About Us | Best Auto Sales & Rentals</title>
     
+    <!-- Link to global styles -->
     <link rel="stylesheet" href="css/main.css">
+    <!-- Link to About page specific styles -->
     <link rel="stylesheet" href="css/about.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <!-- Dynamic Header Injected via he-fo.js -->
     <div id="global-header"></div>
 
     <main class="about-page-wrapper">
         
+        <!-- ===== HERO SECTION ===== -->
         <section class="about-hero">
             <div class="hero-bg">
                 <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1920" alt="Sleek sports car" class="parallax-img">
@@ -23,11 +27,17 @@
             <div class="container hero-text-container reveal-on-scroll">
                 <span class="gold-subtitle">Our Story</span>
                 <h1 class="massive-title">DRIVING EXCELLENCE <br> SINCE DAY ONE.</h1>
+                <!-- Hero CTA added here -->
+                <div class="hero-actions" style="margin-top: 30px;">
+                    <a href="/inventory.html" class="btn btn-solid-gold hero-btn">Explore Inventory</a>
+                </div>
             </div>
         </section>
 
+        <!-- ===== MISSION & VISION SECTION ===== -->
         <section class="mission-vision-section">
             <div class="container mv-grid">
+                <!-- Mission Card -->
                 <div class="mv-card 3d-card reveal-on-scroll slide-right">
                     <div class="mv-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -37,6 +47,7 @@
                     <div class="card-glare"></div>
                 </div>
                 
+                <!-- Vision Card -->
                 <div class="mv-card 3d-card reveal-on-scroll slide-left">
                     <div class="mv-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
@@ -48,6 +59,7 @@
             </div>
         </section>
 
+        <!-- ===== OUR STORY / STATS SECTION ===== -->
         <section class="story-section">
             <div class="container split-layout">
                 <div class="text-block reveal-on-scroll slide-right">
@@ -78,6 +90,7 @@
             </div>
         </section>
 
+        <!-- ===== OWNER SECTION ===== -->
         <section class="owner-section">
             <div class="container split-layout reverse-layout">
                 <div class="text-block reveal-on-scroll slide-left">
@@ -92,13 +105,15 @@
                 </div>
                 <div class="image-block reveal-on-scroll slide-right">
                     <div class="image-card 3d-card owner-image-wrap">
-                        <img src="images/people/m-ceo.jpg" alt="Mikael Best - CEO">
+                        <!-- Professional luxury/executive style Unsplash image -->
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800" alt="Mikael Best - CEO">
                         <div class="card-glare"></div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ===== DYNAMIC FLEET GALLERY ===== -->
         <section class="fleet-gallery">
             <div class="container">
                 <div class="text-center reveal-on-scroll slide-up">
@@ -147,17 +162,24 @@
             </div>
         </section>
 
+        <!-- ===== FINAL CALL TO ACTION (NEW) ===== -->
+        <section class="about-cta-section reveal-on-scroll slide-up">
+            <div class="container text-center cta-box">
+                <h2>Ready to find your perfect ride?</h2>
+                <p>Browse our extensive collection of premium vehicles available for sale and rent right now.</p>
+                <a href="/inventory.html" class="btn btn-solid-gold huge-cta-btn">View Full Inventory</a>
+            </div>
+        </section>
+
     </main>
 
+    <!-- Dynamic Footer Injected via he-fo.js -->
     <div id="global-footer"></div>
 
-    <a href="https://api.whatsapp.com/send/?phone=5926629946&text&type=phone_number&app_absent=0" class="whatsapp-widget" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-3.1-5.3-1.2-8.4 1.5-11.3 2.4-2.4 5.5-6.5 8.3-9.7 2.7-3.2 3.7-5.6 5.6-9.3 1.8-3.7.9-7-.4-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-        </svg>
-    </a>
-
-    <script src="js/he-fo.js"></script>\
+    <!-- Core Asset Pipeline & Routing -->
+    <script src="js/he-fo.js"></script>
+    
+    <!-- About Page Specific Animations -->
     <script src="js/about.js"></script>
 </body>
 </html>
