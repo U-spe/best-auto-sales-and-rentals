@@ -169,14 +169,14 @@
 .inv-card:hover .hover-overlay p { transform: translateY(0); }
 
 .inv-details {
-    padding: 20px 15px;
+    padding: 25px 15px;
     text-align: center; 
 }
 
 .inv-details h3 {
     color: white;
     font-size: 1.15rem;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -185,49 +185,7 @@
 .inv-specs {
     color: var(--text-muted, #9ca3af);
     font-size: 0.85rem;
-    margin-bottom: 20px;
-}
-
-.inv-actions {
-    display: flex;
-    gap: 10px;
-    justify-content: center; 
-}
-
-.btn-half {
-    flex: 1;
-    max-width: 100px;
-    text-align: center;
-    padding: 10px 0;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.8rem;
-}
-
-.btn-buy {
-    background: var(--gold, #D4AF37);
-    color: #000;
-    border: 2px solid var(--gold, #D4AF37);
-}
-
-.btn-buy:hover {
-    background: transparent;
-    color: var(--gold, #D4AF37);
-}
-
-.btn-rent {
-    background: transparent;
-    color: white;
-    border: 2px solid rgba(255,255,255,0.2);
-}
-
-.btn-rent:hover {
-    border-color: white;
-    background: white;
-    color: #000;
+    margin-bottom: 0;
 }
 
 /* --- Centered Load More Controls --- */
@@ -313,7 +271,7 @@
     100% { transform: translateX(calc(-240px * 11)); }
 }
 
-/* --- ADDED SECTION: Features & Perks Layout --- */
+/* --- Features & Perks Layout --- */
 .features-perks-section {
     padding: 100px 0;
     background-color: #0d0d0d;
