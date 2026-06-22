@@ -7,7 +7,7 @@
     
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/inventory.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght=300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -29,10 +29,30 @@
 
         <section class="inventory-section">
             <div class="container">
-                <div class="grid-container" id="inventory-grid"></div>
+                <div class="text-center-forced" style="margin-bottom: 50px;">
+                    <span class="gold-subtitle">Available Now</span>
+                    <h2 style="color: white; font-size: 2.5rem; font-weight: 900;">In Stock</h2>
+                </div>
+                
+                <div class="grid-container" id="instock-grid"></div>
                 
                 <div class="load-more-container">
-                    <button id="load-more-btn" class="btn-load-more">Load More Vehicles</button>
+                    <button id="load-more-instock" class="btn-load-more">Load More Vehicles</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="inventory-section" style="border-top: 1px solid rgba(255,255,255,0.05);">
+            <div class="container">
+                <div class="text-center-forced" style="margin-bottom: 50px;">
+                    <span class="gold-subtitle">Arriving Shortly</span>
+                    <h2 style="color: white; font-size: 2.5rem; font-weight: 900;">Coming Soon</h2>
+                </div>
+                
+                <div class="grid-container" id="comingsoon-grid"></div>
+                
+                <div class="load-more-container">
+                    <button id="load-more-comingsoon" class="btn-load-more">Load More Arrivals</button>
                 </div>
             </div>
         </section>
