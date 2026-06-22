@@ -1,10 +1,11 @@
 /**
  * BEST AUTO SALES & RENTALS - INVENTORY PAGE LOGIC
- * Dynamic Data Array, Centered Card Rendering, and 5-Card Pagination
+ * Dynamic Data Partitioning into In Stock / Coming Soon,
+ * Full-Card Interactive Links, and Segmented Grid Pagination
  */
 
-// 1. VEHICLE DATA STORAGE
-const vehicleData = [
+// 1. RAW VEHICLE DATA SOURCE
+const rawInStockData = [
     { 
         make: "Toyota", 
         model: "Land Cruiser", 
@@ -31,53 +32,88 @@ const vehicleData = [
     }
 ];
 
-// Fill the array to hit exactly 50 total records
-while (vehicleData.length < 50) {
-    const i = vehicleData.length + 1;
-    vehicleData.push({
-        make: "Make Placeholder",
-        model: `Model ${i}`,
-        year: "YYYY",
+const rawComingSoonData = [
+    {
+        make: "Audi",
+        model: "RS e-tron GT",
+        year: "2025",
+        mileage: "0",
+        slug: "audi-rs-etron-gt",
+        img: "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80"
+    }
+];
+
+// Generate synthetic placeholders to build up exactly 50 instances for testing
+const inStockVehicles = [...rawInStockData];
+while (inStockVehicles.length < 25) {
+    const num = inStockVehicles.length + 1;
+    inStockVehicles.push({
+        make: "Premium Stock",
+        model: `Model Type ${num}`,
+        year: "2024",
         mileage: "---",
-        slug: `vehicle-${i}`,
-        img: "" 
+        slug: `instock-vehicle-${num}`,
+        img: ""
     });
 }
 
-// 2. PAGINATION CONFIGURATION
-// Since rows contain 5 elements, we display 10 (2 full rows) to begin with.
-let visibleCount = 10; 
+const comingSoonVehicles = [...rawComingSoonData];
+while (comingSoonVehicles.length < 25) {
+    const num = comingSoonVehicles.length + 1;
+    comingSoonVehicles.push({
+        make: "Incoming Luxury",
+        model: `Arrival ${num}`,
+        year: "2026",
+        mileage: "In Transit",
+        slug: `comingsoon-vehicle-${num}`,
+        img: ""
+    });
+}
+
+// 2. PAGINATION LAYOUT CONFIGURATION
+// Tracks row displays (2 rows = 10 items initially visible per section)
+const itemsPerPage = 10;
+const revealIncrement = 5; // Adds 1 clean structural row per pagination click
 
 document.addEventListener("DOMContentLoaded", () => {
-    generateInventoryCards();
-    initPagination();
+    // Render Grids
+    renderGrid('instock-grid', inStockVehicles);
+    renderGrid('comingsoon-grid', comingSoonVehicles);
+    
+    // Bind Independent Pagination Actions
+    setupPaginationControl('load-more-instock', 'instock-grid');
+    setupPaginationControl('load-more-comingsoon', 'comingsoon-grid');
+    
+    // Initialize Scroll Animations & Parallax Mechanics
+    initScrollReveals();
     initParallaxHero();
 });
 
 /**
- * 3. BUILD AND ATTACH CARDS TO DOM
+ * 3. DYNAMIC GRID RENDERING ENGINE
  */
-function generateInventoryCards() {
-    const grid = document.getElementById('inventory-grid');
-    if (!grid) return;
+function renderGrid(gridId, vehicleArray) {
+    const gridContainer = document.getElementById(gridId);
+    if (!gridContainer) return;
 
-    vehicleData.forEach((car, index) => {
-        const card = document.createElement('div');
+    vehicleArray.forEach((car, index) => {
+        const cardElement = document.createElement('div');
         
-        // Hide items beyond the current visibility threshold
-        if (index >= visibleCount) {
-            card.className = `inv-card reveal-on-scroll slide-up is-hidden`;
+        // Hide elements past the initial page-load row constraints
+        if (index >= itemsPerPage) {
+            cardElement.className = `inv-card reveal-on-scroll slide-up is-hidden`;
         } else {
-            card.className = `inv-card reveal-on-scroll slide-up`;
+            cardElement.className = `inv-card reveal-on-scroll slide-up`;
         }
         
-        card.style.transitionDelay = `${(index % 5) * 0.08}s`;
+        // Smooth staggered rendering coordinates
+        cardElement.style.transitionDelay = `${(index % 5) * 0.08}s`;
 
         const imageContent = car.img 
             ? `<img src="${car.img}" alt="${car.make} ${car.model}" style="width: 100%; height: 100%; object-fit: cover;">`
             : `<span>Vehicle Image</span>`;
 
-        card.innerHTML = `
+        cardElement.innerHTML = `
             <a href="/inventory/${car.slug}" class="card-link">
                 <div class="img-placeholder">
                     ${imageContent}
@@ -85,67 +121,45 @@ function generateInventoryCards() {
                         <p>View Details</p>
                     </div>
                 </div>
-                
                 <div class="inv-details">
                     <h3>${car.make} ${car.model}</h3>
-                    <p class="inv-specs">${car.year} • ${car.mileage} miles</p>
-                    
-                    <div class="inv-actions">
-                        <button class="btn-half btn-buy" data-action="buy">Buy</button>
-                        <button class="btn-half btn-rent" data-action="rent">Rent</button>
-                    </div>
+                    <p class="inv-specs">${car.year} • ${car.mileage} ${car.mileage === 'In Transit' || car.mileage === '---' ? '' : 'miles'}</p>
                 </div>
             </a>
         `;
 
-        // Action interception
-        const buttons = card.querySelectorAll('button');
-        buttons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault(); 
-                e.stopPropagation(); 
-                
-                const action = e.target.getAttribute('data-action');
-                if (action === 'buy') {
-                    window.location.href = '/#contact?intent=buy';
-                } else if (action === 'rent') {
-                    window.location.href = '/#contact?intent=rent';
-                }
-            });
-        });
-
-        grid.appendChild(card);
+        gridContainer.appendChild(cardElement);
     });
-
-    initScrollReveals();
 }
 
 /**
- * 4. PAGINATION ENGINE
- * Reveals 5 elements per iteration (exactly 1 complete row)
+ * 4. PAGINATION HOOK CONNECTOR
  */
-function initPagination() {
-    const loadMoreBtn = document.getElementById('load-more-btn');
-    if (!loadMoreBtn) return;
+function setupPaginationControl(buttonId, gridId) {
+    const targetButton = document.getElementById(buttonId);
+    if (!targetButton) return;
 
-    loadMoreBtn.addEventListener('click', () => {
-        // Find all currently hidden cards
-        const hiddenCards = document.querySelectorAll('.inv-card.is-hidden');
+    targetButton.addEventListener('click', () => {
+        const targetGrid = document.getElementById(gridId);
+        if (!targetGrid) return;
+
+        // Snag only hidden cards localized within this structural layout section
+        const targetedHiddenCards = targetGrid.querySelectorAll('.inv-card.is-hidden');
         
-        // Strip the display block class off the next 5 items
-        for (let i = 0; i < 5; i++) {
-            if (hiddenCards[i]) {
-                hiddenCards[i].classList.remove('is-hidden');
+        // Strip out display restrictions across next structural segment
+        for (let i = 0; i < revealIncrement; i++) {
+            if (targetedHiddenCards[i]) {
+                targetedHiddenCards[i].classList.remove('is-hidden');
             }
         }
 
-        // Drop the selection trigger entirely if no further items are packed
-        const remainingHidden = document.querySelectorAll('.inv-card.is-hidden');
-        if (remainingHidden.length === 0) {
-            loadMoreBtn.style.display = 'none';
+        // Drop the trigger control clean out of view if all records are exposed
+        const postCheckHidden = targetGrid.querySelectorAll('.inv-card.is-hidden');
+        if (postCheckHidden.length === 0) {
+            targetButton.style.display = 'none';
         }
 
-        // Force a scroll dispatch to execute viewport tracking on elements newly brought into view
+        // Dispatch a window event scroll sequence to force update visibility trackers
         window.dispatchEvent(new Event('scroll'));
     });
 }
