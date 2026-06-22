@@ -101,6 +101,64 @@ ul { list-style: none; }
 .v-color { display: inline-block; font-size: 0.75rem; text-transform: uppercase; background: rgba(255,255,255,0.06); padding: 4px 12px; border-radius: 4px; color: var(--gold); margin: 8px 0 18px; font-weight: 700; letter-spacing: 0.5px; }
 .v-details p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px; min-height: 48px; }
 
+/* ===== BRAND CAROUSEL (INFINITE SCROLL) ===== */
+.brand-carousel {
+    background-color: var(--bg-dark);
+    padding: 60px 0;
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid rgba(255,255,255,0.03);
+    display: flex;
+}
+/* Fading edges */
+.brand-carousel::before,
+.brand-carousel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+}
+.brand-carousel::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-dark) 0%, transparent 100%);
+}
+.brand-carousel::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-dark) 0%, transparent 100%);
+}
+.carousel-track {
+    display: flex;
+    width: max-content;
+    animation: infiniteScroll 40s linear infinite;
+}
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+.logo-slide {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding-right: 80px; /* Crucial for seamless loop alignment */
+}
+.logo-slide img {
+    height: 50px;
+    max-width: 150px;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.5) brightness(150%);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.logo-slide img:hover {
+    filter: grayscale(0%) opacity(1) brightness(100%);
+    transform: scale(1.1);
+}
+@keyframes infiniteScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
 /* ===== SPLIT SECTION (RENTALS & SERVICES) ===== */
 .split-section { display: flex; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.03); }
 .half { flex: 1 1 50%; padding: 120px 8%; }
@@ -176,4 +234,8 @@ ul { list-style: none; }
     .filters { width: 100%; overflow-x: auto; padding-bottom: 5px; }
     .whatsapp-widget { bottom: 20px; right: 20px; width: 55px; height: 55px; }
     .whatsapp-widget svg { width: 30px; height: 30px; }
+    
+    /* Make brand logos slightly smaller on mobile */
+    .logo-slide img { height: 35px; }
+    .logo-slide { gap: 50px; padding-right: 50px; }
 }
