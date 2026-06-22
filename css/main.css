@@ -107,8 +107,8 @@ ul { list-style: none; }
     padding: 60px 0;
     overflow: hidden;
     position: relative;
-    border-top: 1px solid rgba(255,255,255,0.03);
-    display: flex;
+    width: 100%;
+    display: block;
 }
 /* Fading edges */
 .brand-carousel::before,
@@ -131,7 +131,9 @@ ul { list-style: none; }
 .carousel-track {
     display: flex;
     width: max-content;
-    animation: infiniteScroll 40s linear infinite;
+    flex-wrap: nowrap;
+    will-change: transform;
+    animation: infiniteScroll 30s linear infinite;
 }
 .carousel-track:hover {
     animation-play-state: paused;
@@ -139,13 +141,16 @@ ul { list-style: none; }
 .logo-slide {
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
     gap: 80px;
-    padding-right: 80px; /* Crucial for seamless loop alignment */
+    padding-right: 80px;
 }
 .logo-slide img {
     height: 50px;
+    width: auto;
     max-width: 150px;
     object-fit: contain;
+    flex-shrink: 0;
     filter: grayscale(100%) opacity(0.5) brightness(150%);
     transition: all 0.3s ease;
     cursor: pointer;
@@ -235,7 +240,7 @@ ul { list-style: none; }
     .whatsapp-widget { bottom: 20px; right: 20px; width: 55px; height: 55px; }
     .whatsapp-widget svg { width: 30px; height: 30px; }
     
-    /* Make brand logos slightly smaller on mobile */
+    /* Carousel Mobile Specifics */
     .logo-slide img { height: 35px; }
     .logo-slide { gap: 50px; padding-right: 50px; }
 }
