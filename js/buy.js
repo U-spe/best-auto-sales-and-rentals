@@ -3,7 +3,7 @@
  */
 
 const buyVehicles = [
-    { make: "Mitsubishi", model: "Canter", year: "2014", mileage: "35,000", slug: "mitsubishi-canter", img: "/images/cars/mitsubishi/canter-1c.jpg" },
+    { make: "Mitsubishi", model: "Canter", year: "2014", mileage: "35,000", slug: "mitsubishi-canter", img: "/images/cars/mitsubishi/canter-1d.jpg" },
     { make: "Mercedes-Benz", model: "G-Class", year: "2023", mileage: "12,000", slug: "mercedes-g-class", img: "https://images.unsplash.com/photo-1520050206274-a1ae44613e6d?auto=format&fit=crop&w=800&q=80" },
     { make: "BMW", model: "X5", year: "2025", mileage: "150", slug: "bmw-x5", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80" }
 ];
