@@ -70,14 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
     setupPaginationControl('load-more-buy', 'buy-grid');
     initScrollReveals();
     initParallaxHero();
-    initHoverScroll(); 
+    // Notice: NO MORE initHoverScroll() or initAutoScroll() called here. 
+    // The hover logic is now built directly into the cards!
 });
 
 function renderGrid(gridId, vehicleArray) {
     const gridContainer = document.getElementById(gridId);
     if (!gridContainer) return;
 
-    // Clear the container first to prevent duplicate stacking if this runs twice
     gridContainer.innerHTML = '';
 
     vehicleArray.forEach((car, index) => {
@@ -85,22 +85,21 @@ function renderGrid(gridId, vehicleArray) {
         cardElement.className = index >= itemsPerPage ? `inv-card reveal-on-scroll slide-up is-hidden` : `inv-card reveal-on-scroll slide-up`;
         cardElement.style.transitionDelay = `${(index % 5) * 0.08}s`;
 
-        // FAILSAFE: If 'images' is missing, fallback to 'img' so the script doesn't crash
         const imageList = (car.images && Array.isArray(car.images)) ? car.images : [car.img || ""];
 
         const carouselImages = imageList.map(imgSrc => {
             if (imgSrc) {
-                // ADDED ASPECT-RATIO: Prevents the container from collapsing to 0 height
                 return `<img src="${imgSrc}" alt="${car.make} ${car.model}" style="flex: 0 0 100%; width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;">`;
             } else {
                 return `<div style="flex: 0 0 100%; width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background-color: #eee; color: #888;"><span>Vehicle Image</span></div>`;
             }
         }).join("");
 
+        // Note the transition speed is now a very fast 0.2s
         cardElement.innerHTML = `
             <a href="/buy/${car.slug}" class="card-link" style="display: block; text-decoration: none; color: inherit;">
                 <div class="img-placeholder" style="overflow: hidden; position: relative; width: 100%;">
-                    <div class="carousel-track" style="display: flex; transition: transform 0.3s ease-in-out;">
+                    <div class="carousel-track" style="display: flex; transition: transform 0.2s ease-in-out;">
                         ${carouselImages}
                     </div>
                     <div class="hover-overlay"><p>View Details</p></div>
@@ -111,6 +110,38 @@ function renderGrid(gridId, vehicleArray) {
                 </div>
             </a>
         `;
+
+        // ==========================================
+        // INDIVIDUAL HOVER LOGIC ATTACHED DIRECTLY 
+        // ==========================================
+        let hoverInterval;
+        let currentIndex = 0;
+        const scrollSpeedMs = 500; // Change images every half-second (very fast)
+
+        cardElement.addEventListener('mouseenter', () => {
+            const track = cardElement.querySelector('.carousel-track');
+            if (!track) return;
+            const imageCount = track.children.length;
+            if (imageCount <= 1) return;
+
+            hoverInterval = setInterval(() => {
+                currentIndex++;
+                if (currentIndex >= imageCount) {
+                    currentIndex = 0; 
+                }
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }, scrollSpeedMs);
+        });
+
+        cardElement.addEventListener('mouseleave', () => {
+            const track = cardElement.querySelector('.carousel-track');
+            clearInterval(hoverInterval); // Stop the timer immediately
+            currentIndex = 0; // Reset index
+            if (track) {
+                track.style.transform = `translateX(0%)`; // Snap back to first image
+            }
+        });
+
         gridContainer.appendChild(cardElement);
     });
 }
@@ -153,39 +184,4 @@ function initParallaxHero() {
     if (heroImg) {
         window.addEventListener('scroll', () => { heroImg.style.transform = `translateY(${window.pageYOffset * 0.4}px) scale(1.1)`; }, { passive: true });
     }
-}
-
-function initHoverScroll() {
-    // Need a slight delay to ensure dynamic cards are in the DOM before targeting them
-    setTimeout(() => {
-        const cards = document.querySelectorAll('.inv-card');
-        
-        cards.forEach(card => {
-            const track = card.querySelector('.carousel-track');
-            if (!track) return;
-
-            const imageCount = track.children.length;
-            if (imageCount <= 1) return; 
-
-            let currentIndex = 0;
-            let hoverInterval;
-            const scrollSpeed = 800; 
-
-            card.addEventListener('mouseenter', () => {
-                hoverInterval = setInterval(() => {
-                    currentIndex++;
-                    if (currentIndex >= imageCount) {
-                        currentIndex = 0; 
-                    }
-                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                }, scrollSpeed);
-            });
-
-            card.addEventListener('mouseleave', () => {
-                clearInterval(hoverInterval);
-                currentIndex = 0;
-                track.style.transform = `translateX(0%)`;
-            });
-        });
-    }, 100);
 }
