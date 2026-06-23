@@ -2,7 +2,6 @@
  * BEST AUTO SALES - BUY PAGE LOGIC
  */
 
-// 1. Update data structure to hold an array of up to 6 images
 const buyVehicles = [
     { 
         make: "Mitsubishi", 
@@ -16,7 +15,6 @@ const buyVehicles = [
             "/images/cars/mitsubishi/canter-1b.jpg",
             "/images/cars/mitsubishi/canter-1c.jpg",
             "/images/cars/mitsubishi/canter-1e.jpg",
-        ] 
     },
     { 
         make: "Mercedes-Benz", 
@@ -50,7 +48,7 @@ const buyVehicles = [
     }
 ];
 
-// Fill with placeholders for testing (Creates arrays of 6 empty image slots)
+// Fill with placeholders for testing
 while (buyVehicles.length < 25) {
     const num = buyVehicles.length + 1;
     buyVehicles.push({ 
@@ -71,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupPaginationControl('load-more-buy', 'buy-grid');
     initScrollReveals();
     initParallaxHero();
-    initAutoScroll(); // Initialize the image slider interval
+    initHoverScroll(); // Initialize the new hover scroll logic
 });
 
 function renderGrid(gridId, vehicleArray) {
@@ -83,7 +81,6 @@ function renderGrid(gridId, vehicleArray) {
         cardElement.className = index >= itemsPerPage ? `inv-card reveal-on-scroll slide-up is-hidden` : `inv-card reveal-on-scroll slide-up`;
         cardElement.style.transitionDelay = `${(index % 5) * 0.08}s`;
 
-        // 2. Map through the 6 images to create the slide track
         const carouselImages = car.images.map(imgSrc => {
             if (imgSrc) {
                 return `<img src="${imgSrc}" alt="${car.make} ${car.model}" style="flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover;">`;
@@ -92,11 +89,11 @@ function renderGrid(gridId, vehicleArray) {
             }
         }).join("");
 
-        // 3. Implement the carousel track inside the placeholder
+        // Note: transition on .carousel-track is sped up to 0.3s
         cardElement.innerHTML = `
             <a href="/buy/${car.slug}" class="card-link" style="display: block; text-decoration: none; color: inherit;">
                 <div class="img-placeholder" style="overflow: hidden; position: relative; width: 100%;">
-                    <div class="carousel-track" style="display: flex; height: 100%; transition: transform 0.6s ease-in-out;">
+                    <div class="carousel-track" style="display: flex; height: 100%; transition: transform 0.3s ease-in-out;">
                         ${carouselImages}
                     </div>
                     <div class="hover-overlay"><p>View Details</p></div>
@@ -151,25 +148,39 @@ function initParallaxHero() {
     }
 }
 
-// 4. New function to handle the automatic sliding
-function initAutoScroll() {
-    const tracks = document.querySelectorAll('.carousel-track');
+// Replaces initAutoScroll with a faster, hover-triggered sequence
+function initHoverScroll() {
+    const cards = document.querySelectorAll('.inv-card');
     
-    tracks.forEach(track => {
+    cards.forEach(card => {
+        const track = card.querySelector('.carousel-track');
+        if (!track) return;
+
         const imageCount = track.children.length;
-        if (imageCount <= 1) return; // Skip if no images to scroll
+        if (imageCount <= 1) return; 
 
         let currentIndex = 0;
+        let hoverInterval;
         
-        // Randomize start delay slightly so they don't all shift at the exact same millisecond
-        const scrollSpeed = 3000 + (Math.random() * 1000); 
+        // Faster interval (800ms) for rapidly viewing images while hovering
+        const scrollSpeed = 800; 
 
-        setInterval(() => {
-            currentIndex++;
-            if (currentIndex >= imageCount) {
-                currentIndex = 0; // Loop back to the start
-            }
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }, scrollSpeed);
+        // Start scrolling when mouse enters
+        card.addEventListener('mouseenter', () => {
+            hoverInterval = setInterval(() => {
+                currentIndex++;
+                if (currentIndex >= imageCount) {
+                    currentIndex = 0; 
+                }
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }, scrollSpeed);
+        });
+
+        // Stop scrolling and snap back to the primary thumbnail when mouse leaves
+        card.addEventListener('mouseleave', () => {
+            clearInterval(hoverInterval);
+            currentIndex = 0;
+            track.style.transform = `translateX(0%)`;
+        });
     });
 }
