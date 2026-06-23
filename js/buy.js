@@ -3,7 +3,7 @@
  */
 
 const buyVehicles = [
-    { make: "Toyota", model: "Land Cruiser", year: "2024", mileage: "5,000", slug: "toyota-land-cruiser", img: "https://images.unsplash.com/photo-1594502184342-2e12f877aa73?auto=format&fit=crop&w=800&q=80" },
+    { make: "Mitsubishi", model: "Canter", year: "2014", mileage: "35,000", slug: "mitsubishi-canter", img: "/images/cars/mitsubishi/canter-1a.jpg" },
     { make: "Mercedes-Benz", model: "G-Class", year: "2023", mileage: "12,000", slug: "mercedes-g-class", img: "https://images.unsplash.com/photo-1520050206274-a1ae44613e6d?auto=format&fit=crop&w=800&q=80" },
     { make: "BMW", model: "X5", year: "2025", mileage: "150", slug: "bmw-x5", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80" }
 ];
@@ -36,7 +36,7 @@ function renderGrid(gridId, vehicleArray) {
         const imageContent = car.img ? `<img src="${car.img}" alt="${car.make} ${car.model}" style="width: 100%; height: 100%; object-fit: cover;">` : `<span>Vehicle Image</span>`;
 
         cardElement.innerHTML = `
-            <a href="/inventory/${car.slug}" class="card-link">
+            <a href="/buy/${car.slug}" class="card-link">
                 <div class="img-placeholder">
                     ${imageContent}
                     <div class="hover-overlay"><p>View Details</p></div>
