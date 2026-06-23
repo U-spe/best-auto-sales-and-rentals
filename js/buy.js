@@ -9,7 +9,6 @@ const buyVehicles = [
         year: "2014", 
         mileage: "35,000", 
         slug: "mitsubishi-canter", 
-        // 1. Updated with your requested URLs
         images: [
             "/images/cars/mitsubishi/canter-1d.jpg",
             "/images/cars/mitsubishi/canter-1a.jpg",
@@ -59,7 +58,7 @@ while (buyVehicles.length < 25) {
         year: "2024", 
         mileage: "---", 
         slug: `buy-vehicle-${num}`, 
-        images: Array(5).fill("") // Filler for the loop
+        images: Array(5).fill("") 
     });
 }
 
@@ -71,13 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
     setupPaginationControl('load-more-buy', 'buy-grid');
     initScrollReveals();
     initParallaxHero();
+    // ALL AUTO-SCROLLING REMOVED
 });
 
 function renderGrid(gridId, vehicleArray) {
     const gridContainer = document.getElementById(gridId);
     if (!gridContainer) return;
 
-    gridContainer.innerHTML = ''; // Clear container
+    gridContainer.innerHTML = ''; 
 
     vehicleArray.forEach((car, index) => {
         const cardElement = document.createElement('div');
@@ -85,28 +85,24 @@ function renderGrid(gridId, vehicleArray) {
         cardElement.style.transitionDelay = `${(index % 5) * 0.08}s`;
 
         const imageList = (car.images && Array.isArray(car.images)) ? car.images : [car.img || ""];
+        const initialImg = imageList[0]; // Set the very first image
 
-        const carouselImages = imageList.map(imgSrc => {
-            if (imgSrc) {
-                return `<img src="${imgSrc}" alt="${car.make} ${car.model}" style="flex: 0 0 100%; width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;">`;
-            } else {
-                return `<div style="flex: 0 0 100%; width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background-color: #eee; color: #888;"><span>Vehicle Image</span></div>`;
-            }
-        }).join("");
+        // Create a single <img> tag rather than a track
+        const imageContent = initialImg 
+            ? `<img class="dynamic-car-img" src="${initialImg}" alt="${car.make} ${car.model}" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;">` 
+            : `<div style="width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background-color: #eee; color: #888;"><span>Vehicle Image</span></div>`;
 
-        // 2. Add the navigation arrows to the inner HTML, styled to float over the images
         cardElement.innerHTML = `
             <a href="/buy/${car.slug}" class="card-link" style="display: block; text-decoration: none; color: inherit; position: relative;">
                 <div class="img-placeholder" style="overflow: hidden; position: relative; width: 100%;">
-                    <div class="carousel-track" style="display: flex; transition: transform 0.3s ease-in-out;">
-                        ${carouselImages}
-                    </div>
+                    
+                    ${imageContent}
                     
                     <button class="nav-arrow prev-arrow" aria-label="Previous image" style="position: absolute; top: 50%; left: 5px; transform: translateY(-50%); background: rgba(0, 0, 0, 0.6); color: #fff; border: none; border-radius: 4px; padding: 8px 12px; cursor: pointer; z-index: 20; font-size: 16px; transition: background 0.2s;">&#10094;</button>
                     
                     <button class="nav-arrow next-arrow" aria-label="Next image" style="position: absolute; top: 50%; right: 5px; transform: translateY(-50%); background: rgba(0, 0, 0, 0.6); color: #fff; border: none; border-radius: 4px; padding: 8px 12px; cursor: pointer; z-index: 20; font-size: 16px; transition: background 0.2s;">&#10095;</button>
 
-                    <div class="hover-overlay" style="z-index: 10; pointer-events: none;"><p>View Details</p></div>
+                    <div class="hover-overlay" style="z-index: 10; pointer-events: none; transition: opacity 0.2s;"><p>View Details</p></div>
                 </div>
                 <div class="inv-details">
                     <h3>${car.make} ${car.model}</h3>
@@ -115,49 +111,47 @@ function renderGrid(gridId, vehicleArray) {
             </a>
         `;
 
-        // 3. Attach JavaScript for the Arrows
+        // Element Selectors
         const prevBtn = cardElement.querySelector('.prev-arrow');
         const nextBtn = cardElement.querySelector('.next-arrow');
-        const track = cardElement.querySelector('.carousel-track');
+        const mainImg = cardElement.querySelector('.dynamic-car-img');
+        const overlay = cardElement.querySelector('.hover-overlay');
+        
         let currentIndex = 0;
-        const imageCount = track.children.length;
+        const imageCount = imageList.length;
 
-        // Hide arrows if there is only one picture
-        if (imageCount <= 1) {
+        // Hide controls if there's only 1 image or it's a blank placeholder
+        if (imageCount <= 1 || !mainImg) {
             prevBtn.style.display = 'none';
             nextBtn.style.display = 'none';
         } else {
-            // Previous Button Logic
+            // DIRECT URL SWAP LOGIC
             prevBtn.addEventListener('click', (e) => {
-                e.preventDefault();  // Stops the <a> tag from changing the page
-                e.stopPropagation(); // Stops the click from bubbling up
-                
-                if (currentIndex > 0) {
-                    currentIndex--;
-                } else {
-                    currentIndex = imageCount - 1; // Loop back to the last image
-                }
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                e.preventDefault(); e.stopPropagation(); 
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : imageCount - 1;
+                mainImg.src = imageList[currentIndex]; // Instantly changes the src URL
             });
 
-            // Next Button Logic
             nextBtn.addEventListener('click', (e) => {
-                e.preventDefault();  // Stops the <a> tag from changing the page
-                e.stopPropagation(); // Stops the click from bubbling up
-                
-                if (currentIndex < imageCount - 1) {
-                    currentIndex++;
-                } else {
-                    currentIndex = 0; // Loop back to the first image
-                }
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                e.preventDefault(); e.stopPropagation(); 
+                currentIndex = (currentIndex < imageCount - 1) ? currentIndex + 1 : 0;
+                mainImg.src = imageList[currentIndex]; // Instantly changes the src URL
             });
-            
-            // Optional UX enhancement: Light up buttons slightly when hovering over them specifically
-            prevBtn.addEventListener('mouseenter', () => prevBtn.style.background = 'rgba(0,0,0,0.9)');
-            prevBtn.addEventListener('mouseleave', () => prevBtn.style.background = 'rgba(0,0,0,0.6)');
-            nextBtn.addEventListener('mouseenter', () => nextBtn.style.background = 'rgba(0,0,0,0.9)');
-            nextBtn.addEventListener('mouseleave', () => nextBtn.style.background = 'rgba(0,0,0,0.6)');
+
+            // OVERLAY HIDING LOGIC
+            // When mouse enters the buttons, force the overlay to be invisible
+            [prevBtn, nextBtn].forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    btn.style.background = 'rgba(0,0,0,0.9)'; // Darken button
+                    if(overlay) overlay.style.opacity = '0'; // Hide the "View Details" text
+                });
+                
+                // When mouse leaves the button, remove the inline style so it returns to normal CSS
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.background = 'rgba(0,0,0,0.6)'; // Revert button
+                    if(overlay) overlay.style.opacity = ''; // Revert the "View Details" text
+                });
+            });
         }
 
         gridContainer.appendChild(cardElement);
