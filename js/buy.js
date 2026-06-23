@@ -2,16 +2,65 @@
  * BEST AUTO SALES - BUY PAGE LOGIC
  */
 
+// 1. Update data structure to hold an array of up to 6 images
 const buyVehicles = [
-    { make: "Mitsubishi", model: "Canter", year: "2014", mileage: "35,000", slug: "mitsubishi-canter", img: "/images/cars/mitsubishi/canter-1d.jpg" },
-    { make: "Mercedes-Benz", model: "G-Class", year: "2023", mileage: "12,000", slug: "mercedes-g-class", img: "https://images.unsplash.com/photo-1520050206274-a1ae44613e6d?auto=format&fit=crop&w=800&q=80" },
-    { make: "BMW", model: "X5", year: "2025", mileage: "150", slug: "bmw-x5", img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80" }
+    { 
+        make: "Mitsubishi", 
+        model: "Canter", 
+        year: "2014", 
+        mileage: "35,000", 
+        slug: "mitsubishi-canter", 
+        images: [
+            "/images/cars/mitsubishi/canter-1d.jpg",
+            "/images/cars/mitsubishi/canter-1a.jpg",
+            "/images/cars/mitsubishi/canter-1b.jpg",
+            "/images/cars/mitsubishi/canter-1c.jpg",
+            "/images/cars/mitsubishi/canter-1e.jpg",
+        ] 
+    },
+    { 
+        make: "Mercedes-Benz", 
+        model: "G-Class", 
+        year: "2023", 
+        mileage: "12,000", 
+        slug: "mercedes-g-class", 
+        images: [
+            "https://images.unsplash.com/photo-1520050206274-a1ae44613e6d?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1503376712341-ea7820e2e505?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?auto=format&fit=crop&w=800&q=80"
+        ] 
+    },
+    { 
+        make: "BMW", 
+        model: "X5", 
+        year: "2025", 
+        mileage: "150", 
+        slug: "bmw-x5", 
+        images: [
+            "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1556189250-72ba954cfc2b?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1607853202273-797f1c22a38e?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1503376712341-ea7820e2e505?auto=format&fit=crop&w=800&q=80"
+        ] 
+    }
 ];
 
-// Fill with placeholders for testing
+// Fill with placeholders for testing (Creates arrays of 6 empty image slots)
 while (buyVehicles.length < 25) {
     const num = buyVehicles.length + 1;
-    buyVehicles.push({ make: "Purchase Option", model: `Model ${num}`, year: "2024", mileage: "---", slug: `buy-vehicle-${num}`, img: "" });
+    buyVehicles.push({ 
+        make: "Purchase Option", 
+        model: `Model ${num}`, 
+        year: "2024", 
+        mileage: "---", 
+        slug: `buy-vehicle-${num}`, 
+        images: Array(6).fill("") 
+    });
 }
 
 const itemsPerPage = 10;
@@ -22,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupPaginationControl('load-more-buy', 'buy-grid');
     initScrollReveals();
     initParallaxHero();
+    initAutoScroll(); // Initialize the image slider interval
 });
 
 function renderGrid(gridId, vehicleArray) {
@@ -33,12 +83,22 @@ function renderGrid(gridId, vehicleArray) {
         cardElement.className = index >= itemsPerPage ? `inv-card reveal-on-scroll slide-up is-hidden` : `inv-card reveal-on-scroll slide-up`;
         cardElement.style.transitionDelay = `${(index % 5) * 0.08}s`;
 
-        const imageContent = car.img ? `<img src="${car.img}" alt="${car.make} ${car.model}" style="width: 100%; height: 100%; object-fit: cover;">` : `<span>Vehicle Image</span>`;
+        // 2. Map through the 6 images to create the slide track
+        const carouselImages = car.images.map(imgSrc => {
+            if (imgSrc) {
+                return `<img src="${imgSrc}" alt="${car.make} ${car.model}" style="flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover;">`;
+            } else {
+                return `<div style="flex: 0 0 100%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #eee; color: #888;"><span>Vehicle Image</span></div>`;
+            }
+        }).join("");
 
+        // 3. Implement the carousel track inside the placeholder
         cardElement.innerHTML = `
-            <a href="/buy/${car.slug}" class="card-link">
-                <div class="img-placeholder">
-                    ${imageContent}
+            <a href="/buy/${car.slug}" class="card-link" style="display: block; text-decoration: none; color: inherit;">
+                <div class="img-placeholder" style="overflow: hidden; position: relative; width: 100%;">
+                    <div class="carousel-track" style="display: flex; height: 100%; transition: transform 0.6s ease-in-out;">
+                        ${carouselImages}
+                    </div>
                     <div class="hover-overlay"><p>View Details</p></div>
                 </div>
                 <div class="inv-details">
@@ -89,4 +149,27 @@ function initParallaxHero() {
     if (heroImg) {
         window.addEventListener('scroll', () => { heroImg.style.transform = `translateY(${window.pageYOffset * 0.4}px) scale(1.1)`; }, { passive: true });
     }
+}
+
+// 4. New function to handle the automatic sliding
+function initAutoScroll() {
+    const tracks = document.querySelectorAll('.carousel-track');
+    
+    tracks.forEach(track => {
+        const imageCount = track.children.length;
+        if (imageCount <= 1) return; // Skip if no images to scroll
+
+        let currentIndex = 0;
+        
+        // Randomize start delay slightly so they don't all shift at the exact same millisecond
+        const scrollSpeed = 3000 + (Math.random() * 1000); 
+
+        setInterval(() => {
+            currentIndex++;
+            if (currentIndex >= imageCount) {
+                currentIndex = 0; // Loop back to the start
+            }
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }, scrollSpeed);
+    });
 }
