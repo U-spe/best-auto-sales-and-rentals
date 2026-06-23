@@ -9,12 +9,13 @@ const buyVehicles = [
         year: "2014", 
         mileage: "35,000", 
         slug: "mitsubishi-canter", 
+        // 1. Updated with your requested URLs
         images: [
             "/images/cars/mitsubishi/canter-1d.jpg",
             "/images/cars/mitsubishi/canter-1a.jpg",
             "/images/cars/mitsubishi/canter-1b.jpg",
             "/images/cars/mitsubishi/canter-1c.jpg",
-            "/images/cars/mitsubishi/canter-1e.jpg",
+            "/images/cars/mitsubishi/canter-1e.jpg"
         ] 
     },
     { 
@@ -58,7 +59,7 @@ while (buyVehicles.length < 25) {
         year: "2024", 
         mileage: "---", 
         slug: `buy-vehicle-${num}`, 
-        images: Array(6).fill("") 
+        images: Array(5).fill("") // Filler for the loop
     });
 }
 
@@ -70,15 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
     setupPaginationControl('load-more-buy', 'buy-grid');
     initScrollReveals();
     initParallaxHero();
-    // Notice: NO MORE initHoverScroll() or initAutoScroll() called here. 
-    // The hover logic is now built directly into the cards!
 });
 
 function renderGrid(gridId, vehicleArray) {
     const gridContainer = document.getElementById(gridId);
     if (!gridContainer) return;
 
-    gridContainer.innerHTML = '';
+    gridContainer.innerHTML = ''; // Clear container
 
     vehicleArray.forEach((car, index) => {
         const cardElement = document.createElement('div');
@@ -95,14 +94,19 @@ function renderGrid(gridId, vehicleArray) {
             }
         }).join("");
 
-        // Note the transition speed is now a very fast 0.2s
+        // 2. Add the navigation arrows to the inner HTML, styled to float over the images
         cardElement.innerHTML = `
-            <a href="/buy/${car.slug}" class="card-link" style="display: block; text-decoration: none; color: inherit;">
+            <a href="/buy/${car.slug}" class="card-link" style="display: block; text-decoration: none; color: inherit; position: relative;">
                 <div class="img-placeholder" style="overflow: hidden; position: relative; width: 100%;">
-                    <div class="carousel-track" style="display: flex; transition: transform 0.2s ease-in-out;">
+                    <div class="carousel-track" style="display: flex; transition: transform 0.3s ease-in-out;">
                         ${carouselImages}
                     </div>
-                    <div class="hover-overlay"><p>View Details</p></div>
+                    
+                    <button class="nav-arrow prev-arrow" aria-label="Previous image" style="position: absolute; top: 50%; left: 5px; transform: translateY(-50%); background: rgba(0, 0, 0, 0.6); color: #fff; border: none; border-radius: 4px; padding: 8px 12px; cursor: pointer; z-index: 20; font-size: 16px; transition: background 0.2s;">&#10094;</button>
+                    
+                    <button class="nav-arrow next-arrow" aria-label="Next image" style="position: absolute; top: 50%; right: 5px; transform: translateY(-50%); background: rgba(0, 0, 0, 0.6); color: #fff; border: none; border-radius: 4px; padding: 8px 12px; cursor: pointer; z-index: 20; font-size: 16px; transition: background 0.2s;">&#10095;</button>
+
+                    <div class="hover-overlay" style="z-index: 10; pointer-events: none;"><p>View Details</p></div>
                 </div>
                 <div class="inv-details">
                     <h3>${car.make} ${car.model}</h3>
@@ -111,36 +115,50 @@ function renderGrid(gridId, vehicleArray) {
             </a>
         `;
 
-        // ==========================================
-        // INDIVIDUAL HOVER LOGIC ATTACHED DIRECTLY 
-        // ==========================================
-        let hoverInterval;
+        // 3. Attach JavaScript for the Arrows
+        const prevBtn = cardElement.querySelector('.prev-arrow');
+        const nextBtn = cardElement.querySelector('.next-arrow');
+        const track = cardElement.querySelector('.carousel-track');
         let currentIndex = 0;
-        const scrollSpeedMs = 500; // Change images every half-second (very fast)
+        const imageCount = track.children.length;
 
-        cardElement.addEventListener('mouseenter', () => {
-            const track = cardElement.querySelector('.carousel-track');
-            if (!track) return;
-            const imageCount = track.children.length;
-            if (imageCount <= 1) return;
-
-            hoverInterval = setInterval(() => {
-                currentIndex++;
-                if (currentIndex >= imageCount) {
-                    currentIndex = 0; 
+        // Hide arrows if there is only one picture
+        if (imageCount <= 1) {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+        } else {
+            // Previous Button Logic
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();  // Stops the <a> tag from changing the page
+                e.stopPropagation(); // Stops the click from bubbling up
+                
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = imageCount - 1; // Loop back to the last image
                 }
                 track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }, scrollSpeedMs);
-        });
+            });
 
-        cardElement.addEventListener('mouseleave', () => {
-            const track = cardElement.querySelector('.carousel-track');
-            clearInterval(hoverInterval); // Stop the timer immediately
-            currentIndex = 0; // Reset index
-            if (track) {
-                track.style.transform = `translateX(0%)`; // Snap back to first image
-            }
-        });
+            // Next Button Logic
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();  // Stops the <a> tag from changing the page
+                e.stopPropagation(); // Stops the click from bubbling up
+                
+                if (currentIndex < imageCount - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; // Loop back to the first image
+                }
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            });
+            
+            // Optional UX enhancement: Light up buttons slightly when hovering over them specifically
+            prevBtn.addEventListener('mouseenter', () => prevBtn.style.background = 'rgba(0,0,0,0.9)');
+            prevBtn.addEventListener('mouseleave', () => prevBtn.style.background = 'rgba(0,0,0,0.6)');
+            nextBtn.addEventListener('mouseenter', () => nextBtn.style.background = 'rgba(0,0,0,0.9)');
+            nextBtn.addEventListener('mouseleave', () => nextBtn.style.background = 'rgba(0,0,0,0.6)');
+        }
 
         gridContainer.appendChild(cardElement);
     });
